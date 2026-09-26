@@ -28,6 +28,48 @@
   @media (max-width:350px){ header{padding:10px 8px; gap:4px;} header .title{font-size:14px;} header .essence{padding:5px 7px; font-size:13px;} }
   header .essence{background:linear-gradient(135deg,#2c2c3e,#1f1f2c); padding:6px 10px; border-radius:20px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:4px; border:1px solid #ffffff14; box-shadow:inset 0 1px 0 #ffffff0d;}
   main{flex:1; padding:12px; padding-bottom:80px; overflow-y:auto;}
+  main.is-home{padding:0; padding-bottom:0; overflow:hidden;}
+  .home{position:relative; height:480px; overflow:hidden; display:flex; flex-direction:column;}
+  .home.compact .home-emo{font-size:64px;} .home.compact .home-name{margin-top:6px; font-size:15px;} .home.compact .home-side{top:62px; gap:6px;} .home.compact .home-ic{height:46px;}
+  .home-bg{position:absolute; inset:0; width:100%; height:100%; z-index:0; opacity:0; transition:opacity .55s ease;}
+  .home-bg.on{opacity:1;}
+  .home-car{position:relative; height:96px;}
+  .home-mbtn{position:absolute; top:50%; border-radius:18px; border:none; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--text);
+    transition:left .38s cubic-bezier(.2,.8,.2,1), width .38s cubic-bezier(.2,.8,.2,1), height .38s cubic-bezier(.2,.8,.2,1), transform .38s cubic-bezier(.2,.8,.2,1), opacity .25s, background .38s, box-shadow .38s;}
+  .home-mbtn.pos-center{left:50%; width:58%; height:88px; transform:translate(-50%,-50%); background:linear-gradient(180deg,#48f0c8,#1cc49a); color:#0d2a24; box-shadow:0 6px 0 #0e8a6c, 0 10px 20px #0008; z-index:2;}
+  .home-mbtn.pos-left{left:1%; width:19%; height:64px; transform:translate(0,-50%); background:#1a1540ee; border:1px solid #8a74e066; opacity:.92; z-index:1;}
+  .home-mbtn.pos-right{left:99%; width:19%; height:64px; transform:translate(-100%,-50%); background:#1a1540ee; border:1px solid #8a74e066; opacity:.92; z-index:1;}
+  .home-mbtn.jump{transition:none; opacity:0;}
+  .home-mbtn .hm-ico{font-size:20px; line-height:1;} .home-mbtn.pos-center .hm-ico{font-size:24px;}
+  .home-mbtn .hm-name{font-weight:900; font-size:12px;} .home-mbtn.pos-center .hm-name{font-size:22px;}
+  .home-mbtn .hm-sub{display:none;} .home-mbtn.pos-center .hm-sub{display:block; font-size:11px; font-weight:800; opacity:.8; max-width:94%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .home-mbtn.pos-center[data-hmode="raid"]{background:linear-gradient(180deg,#ff8a7a,#d8404a); color:#2a0508; box-shadow:0 6px 0 #8a1f2a, 0 10px 20px #0008;}
+  .home-mbtn.pos-center[data-hmode="expedition"]{background:linear-gradient(180deg,#ffd27a,#e89a3a); color:#2a1805; box-shadow:0 6px 0 #9a5a1a, 0 10px 20px #0008;}
+  .home-mbtn.locked.pos-center{filter:saturate(.4) brightness(.85);}
+  .home-mbtn.pos-center:active{transform:translate(-50%,-46%);}
+  nav button.nav-home .ico{font-size:22px;}
+  .home-top{position:relative; z-index:2; padding:12px 12px 0;}
+  .home-prof{display:inline-flex; align-items:center; gap:8px; padding:6px 14px 6px 6px; border-radius:14px; background:#0e0b22cc; border:1px solid #8a74e055;}
+  .home-ava{width:34px; height:34px; border-radius:10px; background:#2b2360; display:flex; align-items:center; justify-content:center; font-size:20px;}
+  .home-side{position:absolute; z-index:3; top:70px; display:flex; flex-direction:column; gap:10px;}
+  .home-side.left{left:10px;} .home-side.right{right:10px;}
+  .home-ic{position:relative; width:52px; height:56px; border-radius:14px; background:#1a1540dd; border:1px solid #8a74e066; color:var(--text); font-size:22px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; box-shadow:0 4px 10px #0006;}
+  .home-ic small{font-size:10px; font-weight:800; color:#d8ccff;}
+  .home-dot{position:absolute; top:4px; right:4px; width:8px; height:8px; border-radius:50%; background:#ff4a4a; box-shadow:0 0 6px #ff4a4a;}
+  .home-hero{position:relative; z-index:2; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding-top:4%; cursor:pointer;}
+  .home-emo{font-size:clamp(72px, 26vw, 120px); line-height:1; filter:drop-shadow(0 0 22px #b79cffaa); animation:homeFloat 3.2s ease-in-out infinite;}
+  @keyframes homeFloat{0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}}
+  .home-name{margin-top:14px; font-size:18px; font-weight:900; text-shadow:0 2px 6px #000a;}
+  .home-rar{font-size:12px; font-weight:800; margin-top:2px;}
+  .home-bottom{position:relative; z-index:3; padding:0 12px 12px; display:flex; flex-direction:column; gap:8px;}
+  .home-modes{display:flex; gap:8px;}
+  .home-mode{position:relative; flex:1; padding:9px 4px 8px; border-radius:14px; background:#1a1540ee; border:1px solid #8a74e066; color:var(--text); font-size:22px; display:flex; flex-direction:column; align-items:center; gap:1px;}
+  .home-mode b{font-size:13px;} .home-mode small{font-size:10px; color:var(--sub); max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .home-mode.locked{opacity:.55;}
+  .home-play{position:relative; width:100%; padding:14px 8px; border-radius:18px; border:none; color:#0d2a24; background:linear-gradient(180deg,#48f0c8,#1cc49a); box-shadow:0 6px 0 #0e8a6c, 0 10px 20px #0008; display:flex; flex-direction:column; align-items:center;}
+  .home-play span{font-size:22px; font-weight:900;} .home-play small{font-size:12px; font-weight:800; opacity:.8;}
+  .home-play:active{transform:translateY(3px); box-shadow:0 3px 0 #0e8a6c, 0 6px 12px #0008;}
+  .home-back{background:#ffffff10; border:1px solid #ffffff22; color:var(--text); border-radius:10px; padding:5px 12px; font-size:12px; font-weight:700; margin-bottom:8px;}
   nav{position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:480px; display:flex; background:linear-gradient(180deg,#1e1e2a,#171720); border-top:1px solid #3d3a5a; z-index:10; box-shadow:0 -4px 16px #00000066;}
   nav button{flex:1; background:none; border:none; color:var(--sub); font-size:12px; padding:10px 0; display:flex; flex-direction:column; align-items:center; gap:2px;}
   nav button.active{color:#c8b8ff; font-weight:800; text-shadow:0 0 10px #8a5bff88;}
@@ -120,6 +162,20 @@
   body.in-battle #app{min-height:0;}
   .bs-top{display:flex; align-items:center; gap:8px;}
   .bs-exit{background:#ffffff14; border:1px solid #ffffff33; border-radius:9px; padding:5px 9px; font-size:12px; color:var(--text); white-space:nowrap;}
+  .bs-vote{display:flex; align-items:center; justify-content:space-between; gap:6px; padding:7px 10px; border-radius:12px; background:#3a2a10; border:1px solid #ffb84d88; color:#ffd9a0; font-size:12px; font-weight:700;}
+  .bs-vote span{display:flex; gap:4px; flex-shrink:0;} .bs-vote .btn{width:auto; padding:4px 10px; font-size:12px;}
+  .rune-chip{display:inline-flex; align-items:center; gap:4px; padding:3px 9px; border-radius:10px; border:1px solid; font-size:12px; font-weight:800; background:#00000030; white-space:nowrap;}
+  .rune-chip small{font-size:10px; opacity:.8;} .rune-chip.empty{border:1px dashed #ffffff33; color:var(--sub); font-weight:600;}
+  .rune-reveal{position:relative; width:min(88vw,340px); display:flex; flex-direction:column; align-items:center;}
+  .rr-stone{font-size:84px; animation:rrShake 1s ease-in-out forwards; filter:drop-shadow(0 0 18px var(--rc));}
+  .rr-card{margin-top:-10px; width:100%; padding:16px 14px; border-radius:18px; text-align:center; background:linear-gradient(180deg,#1e1a33,#14121f); border:2px solid var(--rc); box-shadow:0 0 30px var(--rc); opacity:0; transform:scale(.7); animation:rrPop .45s 1s cubic-bezier(.2,1.4,.4,1) forwards;}
+  .rr-ico{font-size:44px;} .rr-tier{font-size:12px; font-weight:900; color:var(--rc); letter-spacing:1px; margin-top:4px;} .rr-name{font-size:20px; font-weight:900; margin-top:2px;} .rr-desc{font-size:13px; color:#d8d0f0; margin-top:6px;}
+  .rune-reveal.tier-legend .rr-card, .rune-reveal.tier-boss .rr-card{animation:rrPop .45s 1s cubic-bezier(.2,1.4,.4,1) forwards, rrGlow 1.6s 1.4s ease-in-out infinite;}
+  .rune-reveal.tier-boss .rr-stone{animation:rrShake 1.2s ease-in-out forwards, rrHue 1.2s linear;}
+  @keyframes rrShake{0%{transform:scale(.8) rotate(0)} 20%{transform:scale(1) rotate(-8deg)} 40%{transform:rotate(8deg)} 60%{transform:rotate(-10deg) scale(1.08)} 80%{transform:rotate(10deg) scale(1.15)} 100%{transform:scale(0); opacity:0}}
+  @keyframes rrPop{to{opacity:1; transform:scale(1)}}
+  @keyframes rrGlow{0%,100%{box-shadow:0 0 24px var(--rc)} 50%{box-shadow:0 0 50px var(--rc)}}
+  @keyframes rrHue{to{filter:drop-shadow(0 0 30px var(--rc)) hue-rotate(360deg)}}
   .cp-bar{display:flex; justify-content:space-between; align-items:center; gap:6px; padding:7px 10px; margin:6px 0; border-radius:10px; background:#ffffff0c; font-size:12px; white-space:nowrap;}
   .cp-bar b{font-size:13px;} .cp-v{font-size:12px; font-weight:900; padding:2px 10px; border:1px solid; border-radius:10px;}
   .bs-title{flex:1; min-width:0; text-align:center; font-weight:800; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
@@ -147,7 +203,15 @@
       radial-gradient(2.5px 2.5px at 24% 84%,#fff 60%,transparent 66%), radial-gradient(1.5px 1.5px at 52% 6%,#fff 60%,transparent 66%);
     background-size:200px 200px; filter:drop-shadow(0 0 1px #9bb3cf); animation:bsSnow 10s linear infinite;}
   @keyframes bsSnow{from{transform:translateY(0)} to{transform:translateY(200px)}}
-  .bs-row{position:relative; z-index:2; display:flex; justify-content:space-evenly; align-items:flex-end; min-height:10px;}
+  .bs-field.side{justify-content:flex-start; padding:8px 4px 8px; gap:0;}
+  .bs-logtop{position:relative; z-index:3; display:flex; justify-content:center; margin-bottom:2px;}
+  .bs-arena{position:relative; z-index:2; flex:1; min-height:0; display:flex; align-items:stretch; gap:2px;}
+  .bs-col{position:relative; flex:1 1 0; min-width:0; display:flex; flex-direction:column; justify-content:space-evenly; align-items:center; padding-top:18px;}
+  .bs-col.c-mb, .bs-col.c-eb{opacity:.97;}
+  .bs-coltag{position:absolute; top:2px; left:50%; transform:translateX(-50%); font-size:9px; font-weight:800; color:#5b6f8c; background:#ffffffc0; padding:1px 7px; border-radius:6px; white-space:nowrap;}
+  .bs-divider{flex:0 0 0; border-left:2px dashed #9fb4cf88; margin:22px 2px 6px;}
+  .bs-field.side .bu{width:100%; max-width:84px;}
+  .bs-field.side .bu-plate{max-width:100%;}
   .bs-rowtag{position:absolute; left:-18px; top:50%; transform:translateY(-50%); writing-mode:vertical-rl; letter-spacing:1px; font-size:9px; font-weight:800; color:#5b6f8c; background:#ffffffc0; padding:4px 1px; border-radius:6px;}
   .bs-mid{position:relative; z-index:3; height:30px; display:flex; align-items:center; justify-content:center;}
   .bs-mid::before{content:''; position:absolute; left:4%; right:4%; top:50%; border-top:2px dashed #9fb4cf88;}
@@ -190,8 +254,8 @@
   .fx-hit .bu-body{animation:fxHit .4s ease-out .15s;}
   .fx-hit .bu-icon{animation:fxFlash .55s ease-out .15s;}
   .fx-heal .bu-icon{animation:fxGlow .8s ease-out;}
-  @keyframes fxLungeUp{0%{transform:translateY(0)} 35%{transform:translateY(-26px) scale(1.1)} 100%{transform:translateY(0)}}
-  @keyframes fxLungeDown{0%{transform:translateY(0)} 35%{transform:translateY(26px) scale(1.1)} 100%{transform:translateY(0)}}
+  @keyframes fxLungeUp{0%{transform:translateX(0)} 35%{transform:translateX(24px) scale(1.1)} 100%{transform:translateX(0)}} /* (v169) 내 편은 오른쪽으로 돌진 */
+  @keyframes fxLungeDown{0%{transform:translateX(0)} 35%{transform:translateX(-24px) scale(1.1)} 100%{transform:translateX(0)}}
   @keyframes fxHit{0%,100%{transform:translateX(0)} 20%{transform:translateX(-7px)} 40%{transform:translateX(7px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(3px)}}
   @keyframes fxFlash{0%{filter:brightness(2.4) drop-shadow(0 0 10px #ff3b3b)} 100%{filter:drop-shadow(0 2px 2px #0005)}}
   @keyframes fxGlow{0%{filter:drop-shadow(0 0 14px #3ccf5a)} 100%{filter:drop-shadow(0 2px 2px #0005)}}
@@ -427,6 +491,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
       <div class="essence" id="stoneInfoBtn" style="cursor:pointer; position:relative;">🔩 <span id="stoneVal">0</span>
         <div id="stoneInfoPopup" style="display:none; position:absolute; top:130%; right:0; background:var(--panel2); border:1px solid #5b6bff; border-radius:8px; padding:8px 10px; font-size:11px; font-weight:400; color:var(--text); width:160px; text-align:left; line-height:1.4; z-index:50; box-shadow:0 4px 14px #00000066;">🔩 강화석: 레어+ 확정권 · 정령 강화 · 화로 업그레이드에 쓰는 재화예요</div>
       </div>
+      <button id="headerFriendBtn" style="background:none; border:none; color:var(--text); font-size:20px; padding:2px 4px; cursor:pointer; line-height:1; position:relative;">👥<span id="friendDot" style="display:none; position:absolute; top:0; right:0; width:7px; height:7px; border-radius:50%; background:#ff4a4a;"></span></button>
       <button id="headerMenuBtn" style="background:none; border:none; color:var(--text); font-size:22px; padding:2px 6px; cursor:pointer; line-height:1; position:relative;">☰<span id="headerAchieveDot" style="display:none; position:absolute; top:1px; right:1px; width:7px; height:7px; border-radius:50%; background:#ff4a4a; border:1.5px solid var(--panel);"></span></button>
       <div id="headerMenu" style="display:none; position:absolute; top:100%; right:10px; z-index:60; background:var(--panel2); border:1px solid #5b6bff; border-radius:10px; padding:4px; box-shadow:0 8px 24px #000a;">
         <button data-hmenu="achieve" style="display:flex; align-items:center; gap:6px; width:100%; background:none; border:none; color:var(--text); font-size:13px; font-weight:700; padding:8px 12px; border-radius:8px; text-align:left; cursor:pointer; white-space:nowrap;">🏅 업적<span id="headerMenuAchieveDot" style="display:none; width:7px; height:7px; border-radius:50%; background:#ff4a4a;"></span></button>
@@ -444,14 +509,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
   </div>
   <main id="main"></main>
   <nav>
-    <button data-tab="summon" class="active"><span class="ico" style="position:relative;">🔮<span class="navdot" data-navdot="summon"></span></span>소환</button>
-    <button data-tab="hearth"><span class="ico" style="position:relative;">🔥</span>화로</button>
+    <button data-tab="summon"><span class="ico" style="position:relative;">🔮<span class="navdot" data-navdot="summon"></span></span>소환</button>
     <button data-tab="spirits"><span class="ico" style="position:relative;">📦</span>정령</button>
-    <button data-tab="stage"><span class="ico" style="position:relative;">🗺️<span class="navdot" data-navdot="stage"></span></span>탐험</button>
-    <button data-tab="tower" data-requires="tower"><span class="ico" style="position:relative;">🗼<span class="navdot" data-navdot="tower"></span></span>탑</button>
-
-    <button data-tab="expedition" data-requires="expedition"><span class="ico" style="position:relative;">🗡️<span class="navdot" data-navdot="expedition"></span></span>출정</button>
-    <button data-tab="raid"><span class="ico" style="position:relative;">⚔️</span>레이드</button>
+    <button data-tab="home" class="active nav-home"><span class="ico" style="position:relative;">🏠<span class="navdot" data-navdot="home"></span></span>홈</button>
+    <button data-tab="hearth"><span class="ico" style="position:relative;">🔥</span>화로</button>
   </nav>
 </div>
 <div id="modalRoot"></div>
@@ -494,11 +555,6 @@ ELEMENTS.forEach(el=>{
     });
   });
 });
-function siblingKey(key){
-  const sp = SPIRITS[key];
-  const otherV = sp.variant==='a' ? 'b' : 'a';
-  return sp.element+'_'+sp.rarity+'_'+otherV;
-}
 const BASE_ATK = 12;
 const SUMMON_COST = 100;
 const CHAPTER_LENGTH = 10;
@@ -701,11 +757,219 @@ let skillIntroPending = false, skillIntroUntil = 0;
 let skillRenderedFx = 0;
 
 // ---------- 유닛 ----------
+// ===================== (v170) 룬 각인 =====================
+// 정령(종)마다 룬 칸 1개. 분해 → 정령 파편, 파편 10개로 무작위 재각인. 레이드 승리 → 고대 룬석(희귀 이상 확정, 전설·보스 고유 룬 확률)
+// 설정: 레이드 보스는 고대의 존재 — 쓰러뜨리면 그 힘이 룬석으로 남고, 거기서 보스의 룬을 새길 수 있음
+const RUNE_TIERS = { common:{name:'일반', color:'#9fb4cf'}, rare:{name:'희귀', color:'#b07cff'}, legend:{name:'전설', color:'#ffc24a'}, boss:{name:'고대', color:'#ff5a7a'} };
+const RUNE_BASE = {
+  atk:  { name:'맹공의 룬',   icon:'⚔️', vals:{common:.05, rare:.08, legend:.12}, fmt:v=>'공격력 +'+Math.round(v*100)+'%' },
+  hp:   { name:'생명의 룬',   icon:'❤️', vals:{common:.06, rare:.10, legend:.15}, fmt:v=>'체력 +'+Math.round(v*100)+'%' },
+  spd:  { name:'신속의 룬',   icon:'💨', vals:{common:4,   rare:6,   legend:9},   fmt:v=>'속도 +'+v },
+  crit: { name:'예리함의 룬', icon:'🎯', vals:{common:.05, rare:.08, legend:.12}, fmt:v=>'치명타 확률 +'+Math.round(v*100)+'%' },
+  life: { name:'흡혈의 룬',   icon:'🩸', vals:{rare:.06, legend:.10},             fmt:v=>'준 피해의 '+Math.round(v*100)+'% 회복' },
+  dr:   { name:'수호의 룬',   icon:'🛡️', vals:{rare:.05, legend:.08},             fmt:v=>'받는 피해 −'+Math.round(v*100)+'%' }
+};
+const BOSS_RUNES = {
+  frostTyrant:  { id:'frost',   name:'혹한의 룬', icon:'🧊', desc:'공격이 맞으면 12% 확률로 빙결' },
+  infernoDrake: { id:'inferno', name:'겁화의 룬', icon:'🐉', desc:'공격이 맞으면 화상 1중첩' },
+  abyssEye:     { id:'abyss',   name:'심연의 룬', icon:'👁️', desc:'공격이 맞으면 25% 확률로 저주 (받는 피해 +15%, 2라운드)' },
+  eldertree:    { id:'elder',   name:'태고의 룬', icon:'🌳', desc:'라운드 시작마다 최대체력 4% 회복' },
+  dawnJudge:    { id:'judge',   name:'심판의 룬', icon:'⚖️', desc:'체력 30% 이하 적에게 피해 +30%' }
+};
+const RUNE_REROLL_COST = 10;
+const RUNE_INV_MAX = 40;
+const DISMANTLE_SHARDS = [1,2,4,8,15]; // 등급 순서
+const RUNE_STONE_BOSS = { easy:.025, normal:.05, hard:.08, extreme:.12 }; // 룬석 1개당 보스 룬 기본 확률
+const RUNE_STONE_LEGEND = { easy:.05, normal:.10, hard:.18, extreme:.30 };
+const RUNE_PITY_STEP = .005; // 보스 룬이 안 나올 때마다 +0.5%p (보정)
+function bossRuneById(id){ return Object.keys(BOSS_RUNES).map(k=>BOSS_RUNES[k]).find(b=>b.id===id) || null; }
+function runeValid(r){ if(!r || typeof r!=='object') return false; if(r.tier==='boss') return !!bossRuneById(r.id); return !!(RUNE_BASE[r.id] && RUNE_BASE[r.id].vals[r.tier]!==undefined); }
+function runeVal(r){ return (r && r.tier!=='boss' && RUNE_BASE[r.id]) ? RUNE_BASE[r.id].vals[r.tier] : 0; }
+function runeName(r){ return r.tier==='boss' ? bossRuneById(r.id).name : RUNE_BASE[r.id].name; }
+function runeIcon(r){ return r.tier==='boss' ? bossRuneById(r.id).icon : RUNE_BASE[r.id].icon; }
+function runeDesc(r){ return r.tier==='boss' ? bossRuneById(r.id).desc : RUNE_BASE[r.id].fmt(runeVal(r)); }
+function runeChipHtml(r, extra){
+  if(!r) return '<span class="rune-chip empty">빈 룬 칸</span>';
+  const t = RUNE_TIERS[r.tier];
+  return '<span class="rune-chip" style="border-color:'+t.color+'; color:'+t.color+';">'+runeIcon(r)+' '+runeName(r)+' <small>'+t.name+'</small>'+(extra||'')+'</span>';
+}
+function spiritRune(key){ const r = state.runes && state.runes[key]; return runeValid(r) ? r : null; }
+function rollRune(){ // 재각인(파편) — 일반 65% · 희귀 30% · 전설 5%
+  const x = Math.random(), tier = x<0.05 ? 'legend' : (x<0.35 ? 'rare' : 'common');
+  const ids = Object.keys(RUNE_BASE).filter(id=>RUNE_BASE[id].vals[tier]!==undefined);
+  return { id: ids[Math.floor(Math.random()*ids.length)], tier };
+}
+// ---- 전투 적용
+function applyRuneOnBuild(u, rune){ // makeBattleUnit에서 호출: 공격·체력 룬은 바로 수치에 반영
+  if(!runeValid(rune)) return;
+  u.rune = { id: rune.id, tier: rune.tier, v: runeVal(rune) };
+  if(rune.tier!=='boss' && rune.id==='atk') u.atk = u.atk*(1+u.rune.v);
+  if(rune.tier!=='boss' && rune.id==='hp'){ u.maxHp = Math.max(1, Math.round(u.maxHp*(1+u.rune.v))); u.hp = u.maxHp; }
+}
+function runeSpeed(u){ return (u.rune && u.rune.id==='spd' && u.rune.tier!=='boss') ? u.rune.v : 0; }
+function runeCrit(u){ return (u.rune && u.rune.id==='crit' && u.rune.tier!=='boss') ? u.rune.v : 0; }
+function runeDr(u){ return (u.rune && u.rune.id==='dr' && u.rune.tier!=='boss') ? u.rune.v : 0; }
+function runeDmgMult(a, d){ return (a.rune && a.rune.id==='judge' && d.hp/d.maxHp <= 0.3) ? 1.3 : 1; }
+function runeOnHit(sf, a, d, dealt){
+  if(!a.rune || dealt<=0) return;
+  if(a.rune.id==='life' && a.rune.tier!=='boss' && a.alive){ a.hp = Math.min(a.maxHp, a.hp + Math.round(dealt*a.rune.v)); }
+  if(!d.alive || a.side===d.side) return;
+  if(a.rune.id==='frost' && Math.random()<0.12){ d.st.freeze = true; }
+  else if(a.rune.id==='inferno'){ d.st.burnCap = Math.max(d.st.burnCap||5, 5); d.st.burn = Math.min(d.st.burnCap, (d.st.burn||0)+1); d.st.burnDmg = Math.max(d.st.burnDmg||0, Math.round(a.atk*0.15)); }
+  else if(a.rune.id==='abyss' && Math.random()<0.25){ d.st.curse = { v: Math.max(0.15, (d.st.curse&&d.st.curse.v)||0), r:2 }; }
+}
+function runeRoundStart(sf){ aliveUnits(sf.myUnits).forEach(u=>{ if(u.rune && u.rune.id==='elder') u.hp = Math.min(u.maxHp, u.hp + Math.round(u.maxHp*0.04)); }); }
+// ---- 행동
+function runeReroll(key){
+  if((state.shards||0) < RUNE_REROLL_COST){ toast('정령 파편이 부족해요 ('+RUNE_REROLL_COST+'개 필요)'); return; }
+  state.shards -= RUNE_REROLL_COST;
+  const r = rollRune();
+  state.runes = state.runes || {}; state.runes[key] = r;
+  state.lifetimeEngraves = (state.lifetimeEngraves||0) + 1;
+  checkAchievements(); save();
+  showRuneReveal(r, '💠', ()=>showManageModal(key), SPIRITS[key].name+'에 새김');
+}
+function runeEngraveFromInv(key, invIdx){
+  const inv = state.runeInv || [], r = inv[invIdx]; if(!runeValid(r)) return;
+  const old = spiritRune(key);
+  inv.splice(invIdx, 1);
+  if(old){ if(inv.length < RUNE_INV_MAX) inv.push(old); else toast('보관함이 가득 차서 원래 룬은 사라졌어요'); }
+  state.runeInv = inv; state.runes = state.runes || {}; state.runes[key] = r;
+  state.lifetimeEngraves = (state.lifetimeEngraves||0) + 1;
+  checkAchievements(); save();
+  toast(runeName(r)+' 각인 완료'); showManageModal(key);
+}
+// ---- 화면
+function showRuneReveal(r, stoneIcon, onDone, note){
+  const t = RUNE_TIERS[r.tier];
+  document.getElementById('modalRoot').innerHTML = '<div class="modal-bg" id="modalBg"><div class="rune-reveal tier-'+r.tier+'" style="--rc:'+t.color+';">'
+    + '<div class="rr-stone">'+stoneIcon+'</div>'
+    + '<div class="rr-card"><div class="rr-ico">'+runeIcon(r)+'</div><div class="rr-tier">'+t.name+(r.tier==='boss'?' · 레이드 전용':'')+'</div><div class="rr-name">'+runeName(r)+'</div><div class="rr-desc">'+runeDesc(r)+'</div>'
+    + (note?'<div class="sub" style="font-size:11px; margin-top:6px;">'+note+'</div>':'')+'<button class="btn" id="rrOk" style="margin-top:12px;">확인</button></div></div></div>';
+  sfx(r.tier==='boss' || r.tier==='legend' ? 'summonEpic' : 'summon');
+  document.getElementById('rrOk').addEventListener('click', ()=>{ closeModal(); if(onDone) onDone(); });
+}
+function showRuneHub(){
+  const inv = state.runeInv || [], st = state.runeStones || [];
+  let h = '<h3 style="text-align:center;">🔮 룬</h3>';
+  h += '<div style="display:flex; gap:8px; margin:6px 0 10px;"><div class="card" style="flex:1; text-align:center; padding:8px;"><div style="font-size:22px;">💠</div><b>'+(state.shards||0)+'</b><div class="sub" style="font-size:11px;">정령 파편</div></div>'
+    + '<div class="card" style="flex:1; text-align:center; padding:8px;"><div style="font-size:22px;">💎</div><b>'+(state.raidGems||0)+'</b><div class="sub" style="font-size:11px;">고대 룬석</div></div>'
+    + '<div class="card" style="flex:1; text-align:center; padding:8px;"><div style="font-size:22px;">⬆️</div><b>'+(state.runeUpStones||0)+'</b><div class="sub" style="font-size:11px;">승급석</div></div></div>';
+  h += '<button class="btn" id="runeOpenBtn">💎 레이드 상점</button>';
+  h += '<div class="sub" style="font-size:11px; text-align:center; margin:6px 0 10px;">파편은 정령 분해로 · 룬석은 레이드 승리로 얻어요. 정령 상세 창에서 룬을 새기고 승급해요.</div>';
+  h += '<div style="font-weight:700; margin-bottom:4px;">보관함 '+inv.length+'/'+RUNE_INV_MAX+'</div>';
+  h += inv.length ? '<div style="display:flex; flex-direction:column; gap:5px;">'+inv.map(r=>'<div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">'+runeChipHtml(r)+'<span class="sub" style="font-size:11px; text-align:right;">'+runeDesc(r)+'</span></div>').join('')+'</div>' : '<div class="sub" style="text-align:center;">비어 있어요</div>';
+  document.getElementById('modalRoot').innerHTML = '<div class="modal-bg" id="modalBg"><div class="modal" style="position:relative;"><button class="close-x" id="modalClose">✕</button>'+h+'</div></div>';
+  bindModalClose();
+  document.getElementById('runeOpenBtn').addEventListener('click', showRaidShop);
+}
+function runeManageHtml(key){
+  const r = spiritRune(key), inv = state.runeInv || [];
+  let h = '<div style="margin-top:10px; padding:10px; background:var(--panel2); border-radius:12px;">';
+  h += '<div style="display:flex; justify-content:space-between; align-items:center; gap:6px;"><b style="font-size:13px;">🔮 룬 칸</b>'+runeChipHtml(r)+'</div>';
+  if(r) h += '<div class="sub" style="font-size:12px; margin-top:4px; text-align:right;">'+runeDesc(r)+'</div>';
+  h += '<div style="display:flex; gap:6px; margin-top:8px;"><button class="btn secondary small" id="runeRerollBtn" style="flex:1;" '+((state.shards||0)>=RUNE_REROLL_COST?'':'disabled')+'>🎲 재각인 · 💠'+RUNE_REROLL_COST+' ('+(state.shards||0)+')</button>'
+    + '<button class="btn secondary small" id="runeInvBtn" style="flex:1;" '+(inv.length?'':'disabled')+'>📦 보관함에서 ('+inv.length+')</button></div>';
+  if(r && (r.tier==='common' || r.tier==='rare')) h += '<button class="btn secondary small" id="runeUpBtn" style="margin-top:6px;" '+((state.runeUpStones||0)>0?'':'disabled')+'>⬆️ 승급 → '+RUNE_TIERS[r.tier==='common'?'rare':'legend'].name+' · 승급석 1 ('+(state.runeUpStones||0)+')</button>';
+  h += '</div>';
+  return h;
+}
+function showRuneInvPicker(key){
+  const inv = state.runeInv || [];
+  let h = '<h3 style="text-align:center;">룬 새기기</h3><div class="sub" style="text-align:center; margin-bottom:8px;">'+SPIRITS[key].name+'에 새길 룬을 골라주세요'+(spiritRune(key)?' · 지금 룬은 보관함으로 돌아가요':'')+'</div>';
+  h += '<div style="display:flex; flex-direction:column; gap:6px;">'+inv.map((r,i)=>'<button data-rune-inv="'+i+'" style="display:flex; justify-content:space-between; align-items:center; gap:6px; padding:8px; border-radius:10px; background:#1f1f2c; border:1px solid #ffffff1a; color:var(--text);">'+runeChipHtml(r)+'<span class="sub" style="font-size:11px;">'+runeDesc(r)+'</span></button>').join('')+'</div>';
+  document.getElementById('modalRoot').innerHTML = '<div class="modal-bg" id="modalBg"><div class="modal" style="position:relative;"><button class="close-x" id="modalClose">✕</button>'+h+'</div></div>';
+  bindModalClose(()=>showManageModal(key));
+  document.querySelectorAll('[data-rune-inv]').forEach(el=>el.addEventListener('click', ()=>runeEngraveFromInv(key, parseInt(el.dataset.runeInv))));
+}
+// ===================== (v172) 레이드 입장권 · 💎 고대 룬석(레이드 상점 재화) =====================
+// 입장권: 최대 3장, 8시간마다 1장 충전. 전투 시작 때 1장 써야 보상을 받음 — 입장권이 없어도 친구랑 같이 싸울 수는 있음(보상 없음)
+// 룬석: 레이드 승리 보상 → 레이드 상점에서 룬 뽑기·고대 룬 교환·룬 승급석·파편·소환권 구입(주간 구매 한도로 경제 보호)
+const RAID_TICKET_MAX = 3, RAID_TICKET_INTERVAL_MS = 8*60*60*1000;
+const RAID_GEMS = { easy:2, normal:4, hard:7, extreme:12 };
+function raidTicketState(){ if(!state.raidTickets || typeof state.raidTickets!=='object') state.raidTickets = { count: RAID_TICKET_MAX, lastTick: Date.now() }; return state.raidTickets; }
+function raidTicketsRefresh(){
+  const t = raidTicketState(), now = Date.now();
+  if(t.lastTick > now) t.lastTick = now;
+  if(t.count >= RAID_TICKET_MAX){ t.count = RAID_TICKET_MAX; t.lastTick = now; }
+  else{ const n = Math.floor((now - t.lastTick)/RAID_TICKET_INTERVAL_MS); if(n>0){ t.count = Math.min(RAID_TICKET_MAX, t.count+n); t.lastTick = t.count>=RAID_TICKET_MAX ? now : t.lastTick + n*RAID_TICKET_INTERVAL_MS; } }
+  return t;
+}
+function raidTicketCount(){ return raidTicketsRefresh().count; }
+function raidTicketNextText(){ const t = raidTicketsRefresh(); if(t.count>=RAID_TICKET_MAX) return '가득'; const ms = Math.max(0, RAID_TICKET_INTERVAL_MS - (Date.now()-t.lastTick)); const h = Math.floor(ms/3600000), m = Math.floor(ms%3600000/60000); return h+'시간 '+m+'분 후 +1'; }
+function raidUseTicket(code){ // 같은 방에서는 한 번만 씀(새로고침해도 다시 안 씀)
+  if(state.raidTicketFor===code) return !!state.raidTicketHad;
+  const t = raidTicketsRefresh(), had = t.count>0;
+  if(had){ if(t.count>=RAID_TICKET_MAX) t.lastTick = Date.now(); t.count -= 1; }
+  state.raidTicketFor = code; state.raidTicketHad = had; save();
+  return had;
+}
+// ---- 상점
+const RAID_SHOP = [
+  { id:'draw',    icon:'🎲', name:'룬 뽑기',       price:6,  limit:0, desc:'희귀 이상 확정 · 전설 12% · 이번 주 보스 고대 룬 3% (못 뽑을수록 조금씩 상승)' },
+  { id:'boss',    icon:'👑', name:'고대 룬 교환',   price:70, limit:1, desc:'이번 주 보스의 고대 룬 확정' },
+  { id:'upgrade', icon:'⬆️', name:'룬 승급석',     price:15, limit:3, desc:'룬 한 단계 승급 (일반 → 희귀 → 전설)' },
+  { id:'shards',  icon:'💠', name:'정령 파편 ×10', price:3,  limit:5, desc:'룬 재각인 1회분' },
+  { id:'equip',   icon:'🛡️', name:'장비 소환권',   price:5,  limit:5, desc:'' },
+  { id:'rare',    icon:'🎟️', name:'레어 확정권',   price:10, limit:2, desc:'' },
+  { id:'epic',    icon:'💜', name:'에픽 확정권',   price:35, limit:1, desc:'' }
+];
+function raidShopBought(id){ const b = state.raidShopBuys; return (b && b.week===raidWeekKey() && b.n && b.n[id]) || 0; }
+function rollShopRune(){
+  const wb = raidWeekBoss(), bossP = 0.03 + (state.runePity||0);
+  if(Math.random() < bossP && BOSS_RUNES[wb.id]){ state.runePity = 0; return { id: BOSS_RUNES[wb.id].id, tier:'boss' }; }
+  state.runePity = Math.min(0.15, (state.runePity||0) + RUNE_PITY_STEP);
+  const tier = Math.random() < 0.12 ? 'legend' : 'rare';
+  const ids = Object.keys(RUNE_BASE).filter(id=>RUNE_BASE[id].vals[tier]!==undefined);
+  return { id: ids[Math.floor(Math.random()*ids.length)], tier };
+}
+function raidShopBuy(id){
+  const it = RAID_SHOP.find(x=>x.id===id); if(!it) return;
+  if((state.raidGems||0) < it.price){ toast('💎 룬석이 부족해요'); return; }
+  if(it.limit && raidShopBought(id) >= it.limit){ toast('이번 주 구매 한도를 채웠어요'); return; }
+  if((id==='draw' || id==='boss') && (state.runeInv||[]).length >= RUNE_INV_MAX){ toast('룬 보관함이 가득 찼어요'); return; }
+  state.raidGems -= it.price;
+  if(!state.raidShopBuys || state.raidShopBuys.week!==raidWeekKey()) state.raidShopBuys = { week: raidWeekKey(), n:{} };
+  state.raidShopBuys.n[id] = (state.raidShopBuys.n[id]||0) + 1;
+  if(id==='draw' || id==='boss'){
+    const wb = raidWeekBoss();
+    const r = id==='boss' ? { id: BOSS_RUNES[wb.id].id, tier:'boss' } : rollShopRune();
+    state.runeInv = state.runeInv || []; state.runeInv.push(r); save();
+    showRuneReveal(r, '💎', showRaidShop, '룬 보관함으로');
+    return;
+  }
+  if(id==='upgrade') state.runeUpStones = (state.runeUpStones||0) + 1;
+  else if(id==='shards') state.shards = (state.shards||0) + 10;
+  else grantItems({ [id]: 1 });
+  save(); toast(it.icon+' '+it.name+' 구입'); showRaidShop();
+}
+function showRaidShop(){
+  let h = '<h3 style="text-align:center;">💎 레이드 상점</h3>';
+  h += '<div style="text-align:center; margin:4px 0 10px;"><span class="rune-chip" style="border-color:#ff9ab0; color:#ff9ab0; font-size:14px;">💎 '+(state.raidGems||0)+'</span> <span class="sub" style="font-size:11px;">· 한도는 매주 월요일 초기화</span></div>';
+  h += '<div style="display:flex; flex-direction:column; gap:6px;">' + RAID_SHOP.map(it=>{
+    const left = it.limit ? it.limit - raidShopBought(it.id) : null, can = (state.raidGems||0)>=it.price && (left===null || left>0);
+    return '<div style="display:flex; align-items:center; gap:8px; padding:8px; border-radius:12px; background:#1f1f2c; border:1px solid #ffffff14;">'
+      + '<div style="font-size:24px; width:32px; text-align:center;">'+it.icon+'</div>'
+      + '<div style="flex:1; min-width:0;"><b style="font-size:13px;">'+it.name+'</b>'+(left!==null?' <span class="sub" style="font-size:10px;">주 '+left+'/'+it.limit+'</span>':'')+(it.desc?'<div class="sub" style="font-size:11px;">'+it.desc+'</div>':'')+'</div>'
+      + '<button class="btn small" data-shop-buy="'+it.id+'" style="width:auto; padding:6px 10px;" '+(can?'':'disabled')+'>💎 '+it.price+'</button></div>';
+  }).join('') + '</div>';
+  h += '<div class="sub" style="font-size:11px; text-align:center; margin-top:8px;">룬석은 입장권을 쓴 레이드에서 이기면 얻어요 · 이지 2 · 노말 4 · 하드 7 · 익스트림 12</div>';
+  document.getElementById('modalRoot').innerHTML = '<div class="modal-bg" id="modalBg"><div class="modal" style="position:relative;"><button class="close-x" id="modalClose">✕</button>'+h+'</div></div>';
+  bindModalClose();
+  document.querySelectorAll('[data-shop-buy]').forEach(el=>el.addEventListener('click', ()=>raidShopBuy(el.dataset.shopBuy)));
+}
+function runeUpgrade(key){
+  const r = spiritRune(key); if(!r || r.tier==='boss' || r.tier==='legend') return;
+  if((state.runeUpStones||0) < 1){ toast('룬 승급석이 없어요 (레이드 상점)'); return; }
+  const next = r.tier==='common' ? 'rare' : 'legend';
+  if(RUNE_BASE[r.id].vals[next]===undefined) return;
+  state.runeUpStones -= 1; state.runes[key] = { id: r.id, tier: next }; save();
+  showRuneReveal(state.runes[key], '⬆️', ()=>showManageModal(key), SPIRITS[key].name+'의 룬 승급');
+}
 // (v168) 전투력 = √(공격력×체력) × 등급 보정의 합. 시뮬레이션상 상대 대비 0.9배 부근이 승률 50%(상성·기믹은 미반영)
 function unitCP(u){ return (u.alive===false) ? 0 : Math.sqrt(Math.max(0, u.atk*(u.specialMult||1)) * Math.max(0, u.hp)) * (1 + 0.1*u.g); }
 function teamCP(list){ return Math.round((list||[]).reduce((a,u)=>a+unitCP(u),0)); }
 function spiritCP(key){ return Math.round(unitCP(makeBattleUnit('me', 0, key, unitAtk(key), ALLY_HP_MULT))); }
-function bestTeamCP(n){ return Object.keys(SPIRITS).filter(k=>ownedCount(k)>0).map(spiritCP).sort((a,b)=>b-a).slice(0, n||GRID_SLOTS).reduce((a,b)=>a+b,0); }
 function cpVerdict(my, en){ const r = my/Math.max(1,en); if(r>=1.15) return {t:'여유', c:'#5cd65c'}; if(r>=0.95) return {t:'우세', c:'#a8e063'}; if(r>=0.8) return {t:'접전', c:'#ffd24a'}; return {t:'열세', c:'#ff5a5a'}; }
 function fmtCP(n){ return Math.round(n).toLocaleString('ko-KR'); }
 function cpBarHtml(my, en, enLabel, note){
@@ -713,13 +977,15 @@ function cpBarHtml(my, en, enLabel, note){
   return '<div class="cp-bar"><span>💪 내 전투력 <b>'+fmtCP(my)+'</b></span><span class="cp-v" style="color:'+v.c+'; border-color:'+v.c+'77;">'+v.t+'</span><span>'+(enLabel||'👹 상대')+' <b>'+fmtCP(en)+'</b></span></div>'
     + (note ? '<div class="sub" style="text-align:center; font-size:10px; margin-top:-2px;">'+note+'</div>' : '');
 }
-function makeBattleUnit(side, idx, key, atk, hpMult, specialMult, armorOverride){
+function makeBattleUnit(side, idx, key, atk, hpMult, specialMult, armorOverride, runeOverride){
   const sp = SPIRITS[key], g = gradeOf(sp.rarity);
   // (v168 버그수정) 6칸 전투에서 방어구(체력 +%)가 적용되지 않던 문제 — 내 정령은 방어구 배율을 체력에 곱함(레이드 팀원은 보내온 값 사용)
   const armor = Number.isFinite(armorOverride) ? armorOverride : (side==='me' ? armorMult(key) : 1);
   const maxHp = Math.max(1, Math.round(atk*hpMult*armor)); // (v146) specialMult는 공격력에만 적용, 체력에는 반영 안 함
-  return { side, idx, key, element: sp.element, line: sp.element+'_'+sp.variant, g, atk, hp: maxHp, maxHp,
+  const u = { side, idx, key, element: sp.element, line: sp.element+'_'+sp.variant, g, atk, hp: maxHp, maxHp,
     cd1: 0, cd2: 0, alive: true, st: {}, reviveUsed: false, reviveGiven: false, specialMult: specialMult||1 }; // (v162) 스킬2 시작 쿨타임 2턴 제거 — 등급만 되면 바로 사용 가능
+  if(side==='me') applyRuneOnBuild(u, runeOverride!==undefined ? runeOverride : spiritRune(key)); // (v170) 룬
+  return u;
 }
 // (v166) 적 수는 3~6마리로 진행에 따라 늘어남(챕터1 초반 3마리 → 챕터3 후반부터 6마리). 빈 칸은 null
 const ENEMY_FILL_ORDER = [1,0,2,4,3,5]; // 전열 가운데부터 채움
@@ -727,10 +993,18 @@ function enemyCountForStage(i){ const ch = Math.floor(i/CHAPTER_LENGTH), local =
 function enemyGridForStage(i){
   const a = stageEnemyComposition(i), b = stageEnemyComposition(i+1);
   const ra = enemyRarityCompForStage(i), rb = enemyRarityCompForStage(i+1);
-  const els = [a[0],a[1],a[2],a[3],a[4],b[0]], rv = [ra[0],ra[1],ra[2],ra[3],ra[4],rb[0]];
-  const keep = new Set(ENEMY_FILL_ORDER.slice(0, enemyCountForStage(i)));
-  return { els: els.map((e,k)=> keep.has(k) ? e : null), rv };
+  const els0 = [a[0],a[1],a[2],a[3],a[4],b[0]], rv0 = [ra[0],ra[1],ra[2],ra[3],ra[4],rb[0]];
+  // (v169) 역할대로 고정 배치: 돌격·탱커·처형 계열은 전열, 치유·빙결·화상·독·보호막·가속·저주 계열은 후열.
+  // 전열 계열이 모자라면 남은 전열 칸은 다른 정령이 채움(전열이 비면 후열이 바로 노출되므로)
+  const n = enemyCountForStage(i);
+  const pool = [];
+  for(let k=0;k<n;k++) pool.push({ el: els0[k], rv: rv0[k], front: ENEMY_FRONT_LINES.includes(els0[k]+'_'+rv0[k].variant) });
+  pool.sort((x,y)=> (y.front?1:0) - (x.front?1:0)); // 안정 정렬 — 같은 역할끼리는 원래 순서 유지
+  const els = [null,null,null,null,null,null], rv = rv0.slice();
+  pool.forEach((u,k)=>{ const pos = ENEMY_FILL_ORDER[k]; els[pos] = u.el; rv[pos] = u.rv; });
+  return { els, rv };
 }
+const ENEMY_FRONT_LINES = ['fire_a','wood_a','dark_a']; // 전열에 서는 계열(돌격·탱커·흡혈처형)
 // (v146) 특수 규칙 이식: 황금/봉인 슬롯·속성 필드 = 그 자리 공격력 배율, 순서·커버리지·인접·다양성·연쇄(+정예·자원)는 조건 충족 쪽 팀 전체 배율.
 // 둘 다 dealDamage에서 공격력에만 곱해지고 체력(HP)에는 영향 없음(공격력 배율이라는 표시와 일치시키기 위함).
 function specialUnitMult(spec, idx, element, elements, isPlayer){
@@ -782,7 +1056,7 @@ function skillTargetable(sf, side, idx){
   if(!u || !u.alive) return false;
   return side==='me' ? true : validEnemyTargets(sf).includes(idx);
 }
-function effSpeed(u){ const s = u.st; return speedForElementRarity(u.element, SPIRITS[u.key].rarity) + (s.haste?s.haste.v:0) - (s.slow?s.slow.v:0) - (s.chill||0); }
+function effSpeed(u){ const s = u.st; return speedForElementRarity(u.element, SPIRITS[u.key].rarity) + runeSpeed(u) + (s.haste?s.haste.v:0) - (s.slow?s.slow.v:0) - (s.chill||0); }
 function pushLog(sf, line){ sf.log = (sf.log||[]).concat(line).slice(-5); }
 function setFx(sf, fx){ sf.fxSeq = (sf.fxSeq||0) + 1; fx.id = sf.fxSeq; sf.lastFx = fx; }
 
@@ -799,6 +1073,7 @@ function atkBonus(sf, a, d){
 function dmgReduction(sf, d){
   let r = 0;
   if(d.line==='wood_a' && d.g>=1) r += [0,.08,.10,.12,.15][d.g];
+  r += runeDr(d);
   { const w = sideWidth(sf, d.side); if(!isFrontRow(d.idx, w)){ const f = unitAt(sf, d.side, d.idx-w); if(f && f.alive && f.line==='wood_a' && f.g>=4) r += 0.2; } }
   return r;
 }
@@ -826,7 +1101,7 @@ function killUnit(sf, u){
 function dealDamage(sf, a, d, mult, opts){
   opts = opts || {};
   if(!d.alive) return null;
-  let v = a.atk * mult * (a.specialMult||1) * typeMult(a.element, d.element) * (1 + atkBonus(sf, a, d));
+  let v = a.atk * mult * (a.specialMult||1) * typeMult(a.element, d.element) * (1 + atkBonus(sf, a, d)) * runeDmgMult(a, d);
   if(sf.mode==='boss'){
     const adj = bossDefenseAdjust(sf, a, d, v);
     if(adj.blocked) return { total:0, crit:false, blocked:true };
@@ -836,7 +1111,7 @@ function dealDamage(sf, a, d, mult, opts){
   const s = d.st;
   v *= 1 + (s.curse ? s.curse.v : 0) + (s.web ? s.web.v : 0);
   v *= Math.max(0.1, 1 - dmgReduction(sf, d));
-  let critCh = BASE_CRIT;
+  let critCh = BASE_CRIT + runeCrit(a);
   if(a.line==='dark_b' && a.g>=1 && s.curse) critCh += [0,.10,.15,.20,.25][a.g];
   const crit = !opts.noCrit && Math.random() < critCh;
   if(crit) v *= CRIT_MULT;
@@ -844,6 +1119,7 @@ function dealDamage(sf, a, d, mult, opts){
   let rest = total;
   if(s.shield>0){ const ab = Math.min(s.shield, rest); s.shield -= ab; rest -= ab; if(s.shield<=0) delete s.shield; }
   d.hp = Math.max(0, d.hp - rest);
+  runeOnHit(sf, a, d, total);
   if(s.reflect && total>0 && a.alive && a!==d){ const rd = Math.round(total*s.reflect.v); a.hp = Math.max(0, a.hp - rd); if(a.hp<=0) killUnit(sf, a); }
   if(d.hp<=0) killUnit(sf, d);
   return { total, crit };
@@ -930,10 +1206,10 @@ const RAID_BOSSES = [
 ];
 // (v168) 레이드 난이도 — 보스 공격력·체력 배율과 보상이 다름. 방장이 방에서 고르고, 팀원은 같은 난이도로 싸움
 const RAID_DIFFS = [
-  { id:'easy',    name:'이지',     color:'#5cd65c', atk:0.5,  hp:0.35, stone:60,  equip:0, weekly:{summon:1} },
-  { id:'normal',  name:'노말',     color:'#4a90ff', atk:1,    hp:1,   stone:150, equip:1, weekly:{rare:1} },
-  { id:'hard',    name:'하드',     color:'#ffa94d', atk:1.7,  hp:1.8, stone:260, equip:2, weekly:{rare:2} },
-  { id:'extreme', name:'익스트림', color:'#ff5a5a', atk:4,    hp:5,   stone:420, equip:3, weekly:{epic:1} }
+  { id:'easy',    name:'이지',     color:'#5cd65c', atk:0.5,  hp:0.35, stone:60,  runes:1, weekly:{summon:1} },
+  { id:'normal',  name:'노말',     color:'#4a90ff', atk:1,    hp:1,   stone:150, runes:1, weekly:{rare:1} },
+  { id:'hard',    name:'하드',     color:'#ffa94d', atk:1.7,  hp:1.8, stone:260, runes:2, weekly:{rare:2}, gear:{ legendary:.05, epic:.25 } },
+  { id:'extreme', name:'익스트림', color:'#ff5a5a', atk:4,    hp:5,   stone:420, runes:3, weekly:{epic:1}, gear:{ legendary:.15, epic:.40 } }
 ];
 function raidDiffById(id){ return RAID_DIFFS.find(d=>d.id===id) || RAID_DIFFS[1]; }
 function raidBossById(id){ return RAID_BOSSES.find(b=>b.id===id) || null; }
@@ -981,7 +1257,7 @@ function raidCleanPicks(arr){
   const out = [];
   for(let i=0;i<4;i++){
     const p = (arr && typeof arr==='object') ? arr[i] : null;
-    out.push(p && typeof p==='object' && typeof p.key==='string' && SPIRITS[p.key] && Number.isFinite(p.atk) ? { key:p.key, atk: Math.max(1, Math.min(1e7, p.atk)), arm: Number.isFinite(p.arm) ? Math.max(1, Math.min(10, p.arm)) : 1 } : null);
+    out.push(p && typeof p==='object' && typeof p.key==='string' && SPIRITS[p.key] && Number.isFinite(p.atk) ? { key:p.key, atk: Math.max(1, Math.min(1e7, p.atk)), arm: Number.isFinite(p.arm) ? Math.max(1, Math.min(10, p.arm)) : 1, rune: runeValid(p.rune) ? { id:p.rune.id, tier:p.rune.tier } : null } : null);
   }
   return out;
 }
@@ -992,7 +1268,8 @@ function raidCleanDoc(d){
     bossId: raidBossById(d.bossId) ? d.bossId : RAID_BOSSES[0].id, diff: raidDiffById(d.diff).id,
     picks: (d.picks && typeof d.picks==='object') ? d.picks : {}, ready: (d.ready && typeof d.ready==='object') ? d.ready : {},
     battleJson: typeof d.battleJson==='string' ? d.battleJson : null, battleSeq: Number.isFinite(d.battleSeq) ? d.battleSeq : 0,
-    createdAt: Number.isFinite(d.createdAt) ? d.createdAt : 0 };
+    createdAt: Number.isFinite(d.createdAt) ? d.createdAt : 0,
+    surrender: (d.surrender && typeof d.surrender==='object') ? d.surrender : {} };
 }
 function raidParseBattle(json){
   try{
@@ -1006,7 +1283,7 @@ function raidParseBattle(json){
 // ---------- 전투 구성 ----------
 function buildRaidFight(hostPicks, guestPicks, bossId, diffId){
   const myUnits = [];
-  const add = (arr, slots, owner)=> raidCleanPicks(arr).forEach((p,i)=>{ if(p){ const u = makeBattleUnit('me', slots[i], p.key, p.atk, ALLY_HP_MULT, 1, p.arm); u.owner = owner; myUnits.push(u); } });
+  const add = (arr, slots, owner)=> raidCleanPicks(arr).forEach((p,i)=>{ if(p){ const u = makeBattleUnit('me', slots[i], p.key, p.atk, ALLY_HP_MULT, 1, p.arm, p.rune||null); u.owner = owner; myUnits.push(u); } });
   add(hostPicks, P1_SLOTS, 'host'); add(guestPicks, P2_SLOTS, 'guest');
   const info = raidBossById(bossId) || raidWeekBoss();
   const diff = raidDiffById(diffId);
@@ -1046,14 +1323,28 @@ function raidGrantReward(sf){
   state.raidRewarded = Array.isArray(state.raidRewarded) ? state.raidRewarded : [];
   if(state.raidRewarded.includes(raidNet.code)) return;
   state.raidRewarded = state.raidRewarded.concat(raidNet.code).slice(-30);
+  if(!raidUseTicket(raidNet.code)){ raidNet.rewardText = '🎫 입장권이 없어서 이번 판은 보상이 없어요'; save(); return; }
   if(sf.result.win){
     const dd = raidDiffById(sf.raidDiff), wk = raidWeekKey();
     if(!state.raidWeekDone || state.raidWeekDone.week!==wk) state.raidWeekDone = { week: wk, diffs: [] };
     const first = !state.raidWeekDone.diffs.includes(dd.id);
-    state.enhanceStone = (state.enhanceStone||0) + dd.stone; if(dd.equip) grantItems({equip:dd.equip});
+    state.enhanceStone = (state.enhanceStone||0) + dd.stone;
+    const gems = RAID_GEMS[dd.id] || 0; state.raidGems = (state.raidGems||0) + gems; // (v172) 룬석 = 레이드 상점 재화
     if(first){ grantItems(dd.weekly); state.raidWeekDone.diffs.push(dd.id); if(dd.id!=='easy') state.raidWeekCleared = wk; }
     const itemTxt = it=> Object.keys(it).map(k=>({summon:'🔮 소환권',rare:'🎟️ 레어 확정권',epic:'💜 에픽 확정권',equip:'🛡️ 장비 소환권'}[k]||k)+' +'+it[k]).join(' · ');
-    raidNet.rewardText = '['+dd.name+'] 🔩 강화석 +'+dd.stone+(dd.equip?' · 🛡️ 장비 소환권 +'+dd.equip:'')+(first ? '<br>'+itemTxt(dd.weekly)+' (이번 주 '+dd.name+' 첫 승리)' : '');
+    raidNet.rewardText = '<b style="font-size:15px; color:#ff9ab0;">💎 고대 룬석 +'+gems+'</b><br>['+dd.name+'] 🔩 강화석 +'+dd.stone+(first ? '<br>'+itemTxt(dd.weekly)+' (이번 주 '+dd.name+' 첫 승리)' : '');
+    raidNet.gotStones = true;
+    // (v171) 하드부터 보스 속성 장비 드롭(레전더리 먼저 굴리고, 안 나오면 에픽) — 보스가 두른 속성의 무기·방어구가 떨어진다는 설정
+    if(dd.gear){
+      const bossInfo = raidBossById(sf.raidBossId), x = Math.random();
+      const rar = x < dd.gear.legendary ? 'legendary' : (x < dd.gear.legendary + dd.gear.epic ? 'epic' : null);
+      if(rar && bossInfo){
+        const gk = equipKey(EQUIP_SLOTS[Math.floor(Math.random()*EQUIP_SLOTS.length)], bossInfo.element, rar);
+        addEquip(gk); save();
+        const gi = equipInfo(gk);
+        raidNet.rewardText += '<br><b style="color:'+RARITY_INFO[rar].color+';">'+(rar==='legendary'?'✨ ':'')+gi.icon+' '+gi.name+' ('+RARITY_INFO[rar].name+') 획득!</b>';
+      }
+    }
   }else{
     state.enhanceStone = (state.enhanceStone||0) + 30;
     raidNet.rewardText = '🔩 강화석 +30 (참가 보상)';
@@ -1063,10 +1354,10 @@ function raidGrantReward(sf){
 function raidResultOverlayHtml(sf){
   const r = sf.result;
   let h = '<div class="bs-result"><div class="bs-rcard '+(r.win?'win':'lose')+'">';
-  h += r.win ? '<div class="bs-ricon">🏆</div><div class="bs-rtitle">레이드 승리!</div>' : '<div class="bs-ricon">💀</div><div class="bs-rtitle">패배</div>';
+  h += r.win ? '<div class="bs-ricon">🏆</div><div class="bs-rtitle">레이드 승리!</div>' : (r.surrender ? '<div class="bs-ricon">🏳️</div><div class="bs-rtitle">레이드 포기</div>' : '<div class="bs-ricon">💀</div><div class="bs-rtitle">패배</div>');
   h += '<div class="bs-rsub">'+r.rounds+'라운드'+(raidNet.role==='solo'?' · 연습(보상 없음)':'')+'</div>';
   if(raidNet.rewardText) h += '<div class="bs-rrew"><div>'+raidNet.rewardText+'</div></div>';
-  h += '<div class="bs-rbtns"><button class="btn" id="skillResultCloseBtn">확인</button></div></div></div>';
+  h += '<div class="bs-rbtns">'+(r.win && raidNet.gotStones ? '<button class="btn" id="raidOpenStonesBtn" style="background:linear-gradient(180deg,#ff8ab0,#c0406a);">💎 레이드 상점</button>' : '')+'<button class="btn'+(r.win && raidNet.gotStones?' secondary':'')+'" id="skillResultCloseBtn">확인</button></div></div></div>';
   return h;
 }
 
@@ -1147,13 +1438,26 @@ function raidOnDoc(snap){
   if(raidNet.role==='guest' && d.guest!==raidNet.uid){ raidLocalCleanup(); toast('방에서 나가졌어요'); render(); return; }
   if(d.status==='closed'){ const sf = state.skillFight; if(sf && sf.mode==='raid' && sf.result) return; raidLocalCleanup(); state.skillFight = null; unmountBattleScreen(); save(); toast('레이드가 해산됐어요'); render(); return; }
   raidNameOf(raidPartnerUid());
-  if(d.status==='lobby'){ showRaidLobbyModal(); return; }
+  if(raidNet.role==='host' && raidNet.lastGuest && !d.guest && (d.status==='lobby')) toast('팀원이 나갔어요');
+  raidNet.lastGuest = d.guest;
+  if(d.status==='lobby'){ raidNet.picksInit = false; showRaidLobbyModal(); return; }
   if(d.status==='pick'){
     if(raidNet.role==='host' && d.guest && d.ready[d.host] && d.ready[d.guest] && !raidNet.starting) raidHostStartBattle(d);
     else if(!raidNet.starting) showRaidPickModal();
     return;
   }
   if(!d.battleJson) return;
+  { // (v169) 포기 투표: 둘 다 동의하면 방장이 패배 처리
+    const sig = JSON.stringify(d.surrender||{});
+    const both = d.guest && d.surrender[d.host]===true && d.surrender[d.guest]===true;
+    if(raidNet.role==='host' && both && state.skillFight && state.skillFight.mode==='raid' && !state.skillFight.result){
+      const sf = state.skillFight; clearTimeout(skillPumpTimer); skillPumpTimer = null;
+      sf.result = { win:false, rounds: sf.round, surrender:true }; pushLog(sf, '🏳️ 레이드를 포기했다');
+      raidNet.rewardText = '🏳️ 포기 — 보상 없음';
+      save(); showSkillStageScreen(); afterFightMutation();
+    }
+    if(sig!==raidNet.surSig){ raidNet.surSig = sig; if(document.getElementById('battleScreen') && state.skillFight && state.skillFight.mode==='raid') showSkillStageScreen(); }
+  }
   if(raidNet.role==='guest'){
     if(d.battleSeq===raidNet.lastBattleSeq) return;
     const sf = raidParseBattle(d.battleJson); if(!sf) return;
@@ -1162,8 +1466,9 @@ function raidOnDoc(snap){
     clearTimeout(skillPumpTimer); skillPumpTimer = null;
     state.skillFight = sf;
     if(raidNet.pendingSeq && (sf.actSeq||0) >= raidNet.pendingSeq) raidNet.pendingSeq = 0;
-    if(sf.result) raidGrantReward(sf);
-    if(first){ skillSel.key = null; skillIntroPending = true; activeTab = 'raid'; render(); }
+    if(sf.result && sf.result.surrender){ raidNet.rewardText = '🏳️ 포기 — 보상 없음'; state.raidRewarded = (state.raidRewarded||[]).concat(raidNet.code).slice(-30); }
+    else if(sf.result) raidGrantReward(sf);
+    if(first){ raidUseTicket(raidNet.code); skillSel.key = null; skillIntroPending = true; activeTab = 'raid'; render(); }
     showSkillStageScreen();
   }else if(!state.skillFight || state.skillFight.mode!=='raid'){ // 방장이 새로고침한 뒤 이어하기
     const sf = raidParseBattle(d.battleJson); if(!sf) return;
@@ -1175,7 +1480,7 @@ function raidOnDoc(snap){
 function raidOnActDoc(snap){ if(raidNet.role==='host' && snap && snap.exists) raidHostApplyRemote(snap.data()); }
 async function raidAttach(code, role){
   raidNet.code = code; raidNet.role = role; raidNet.doc = null; raidNet.battleSeq = 0; raidNet.lastBattleSeq = -1;
-  raidNet.pendingSeq = 0; raidNet.starting = false; raidNet.rewardText = ''; raidNet.partnerOnline = null; raidNet.partnerOffSince = 0;
+  raidNet.pendingSeq = 0; raidNet.starting = false; raidNet.rewardText = ''; raidNet.gotStones = false; raidNet.partnerOnline = null; raidNet.partnerOffSince = 0;
   raidNet.myPicks = [null,null,null,null]; raidNet.selSlot = 0; raidNet.picksInit = false;
   state.raidSession = { code, role }; save();
   raidNet.unsubs.push(raidRef().onSnapshot(raidOnDoc, e=>raidNetError(e)));
@@ -1288,6 +1593,22 @@ async function raidDissolve(){
   raidLocalCleanup(); state.skillFight = null; unmountBattleScreen(); save(); render();
   try{ await raidWriteChain; await ref.update({ status:'closed' }); if(role==='host') await raidNet.db.doc('raidActs/'+code).delete(); }catch(e){}
 }
+function raidSurrenderVote(v){ if(!raidIsNet() || !raidNet.doc) return; raidUpdate({ surrender:{ [raidNet.uid]: !!v } }); }
+function raidSurrenderClear(){ const d = raidNet.doc; if(!raidIsNet() || !d) return; const o = {}; o[d.host] = false; if(d.guest) o[d.guest] = false; raidUpdate({ surrender: o }); }
+function raidSurrenderBannerHtml(sf){
+  const d = raidNet.doc; if(!d || !raidIsNet() || sf.result) return '';
+  const pid = raidPartnerUid(), mine = d.surrender[raidNet.uid]===true, theirs = pid && d.surrender[pid]===true;
+  if(theirs && !mine) return '<div class="bs-vote">🏳️ '+raidNameOf(pid)+'님이 포기를 제안했어요<span><button class="btn small" id="raidVoteYes">동의</button><button class="btn secondary small" id="raidVoteNo">거절</button></span></div>';
+  if(mine && !theirs) return '<div class="bs-vote">🏳️ 포기 제안 중 · 팀원 응답 대기<span><button class="btn secondary small" id="raidVoteNo">취소</button></span></div>';
+  return '';
+}
+async function raidLeavePick(){ // (v169) 정령 선택 단계 나가기 — 팀원이면 방에서 빠지고 로비로 돌림, 방장이면 방을 닫음
+  const code = raidNet.code, role = raidNet.role, d = raidNet.doc; if(!code || !d) return;
+  if(role==='host'){ await raidDissolve(); return; }
+  const ref = raidRef(), ready = {}; ready[d.host] = false; ready[raidNet.uid] = false;
+  raidLocalCleanup(); render();
+  try{ await raidWriteChain; await ref.update({ guest:null, status:'lobby', ready }); }catch(e){}
+}
 async function raidFinish(){ // 결과 화면 '확인'
   const code = raidNet.code, role = raidNet.role;
   raidLocalCleanup(); state.skillFight = null; unmountBattleScreen(); save(); activeTab = 'raid'; render();
@@ -1306,12 +1627,13 @@ async function raidResume(){
 }
 
 // ---------- 시작 · 선택 ----------
-function raidMyPickPayload(){ return raidNet.myPicks.map(k=> k ? { key:k, atk: Math.round(unitAtk(k)), arm: Math.round(armorMult(k)*1000)/1000 } : null); }
-function raidAiPickPayload(){ return raidAutoPicks().map(k=>({ key:k, atk:unitAtk(k), arm:armorMult(k) })); }
+function raidMyPickPayload(){ return raidNet.myPicks.map(k=> k ? { key:k, atk: Math.round(unitAtk(k)), arm: Math.round(armorMult(k)*1000)/1000, rune: spiritRune(k) } : null); }
+function raidAiPickPayload(){ return raidAutoPicks().map(k=>({ key:k, atk:unitAtk(k), arm:armorMult(k), rune: spiritRune(k) })); }
 function raidAutoPicks(){ return Object.keys(SPIRITS).filter(k=>ownedCount(k)>0).sort((a,c)=>unitAtk(c)-unitAtk(a)).slice(0,4); }
 function raidSavePicks(){ if(raidIsNet()) raidUpdate({ picks:{ [raidNet.uid]: raidMyPickPayload() }, ready:{ [raidNet.uid]: false } }); }
 async function raidHostStartBattle(d){
   raidNet.starting = true;
+  raidUseTicket(raidNet.code);
   const sf = buildRaidFight(d.picks[d.host], d.picks[d.guest], d.bossId, d.diff);
   state.skillFight = sf; skillSel.key = null; skillIntroPending = true;
   raidNet.battleSeq = 1;
@@ -1336,6 +1658,8 @@ function raidBossCardHtml(info){
   h += '<div style="font-size:17px; font-weight:900;">'+info.name+' <span style="font-size:13px; color:'+ELEMENT_INFO[info.element].color+';">'+ELEMENT_INFO[info.element].icon+' '+ELEMENT_INFO[info.element].name+'</span></div>';
   h += '<div style="margin-top:10px; text-align:left;">';
   info.gimmicks.forEach(g=>{ h += '<div style="padding:7px 9px; margin-top:6px; border-radius:10px; background:#ffffff0c;"><b style="font-size:13px;">⚠️ '+g.name+'</b><div class="sub" style="font-size:12px; margin-top:2px;">'+g.desc+'</div></div>'; });
+  const br = BOSS_RUNES[info.id];
+  if(br) h += '<div style="padding:7px 9px; margin-top:6px; border-radius:10px; background:#ff5a7a1a; border:1px solid #ff5a7a55;"><b style="font-size:13px; color:#ff9ab0;">💎 고대 룬 · '+br.icon+' '+br.name+'</b><div class="sub" style="font-size:12px; margin-top:2px;">'+br.desc+' — 이 보스의 룬석에서만 나와요</div></div>';
   h += '</div>';
   h += '</div>';
   return h;
@@ -1384,6 +1708,8 @@ function friendRefresh(){ // 입력 중이면 탭을 다시 그리지 않음(글
   clearTimeout(friendRefreshTimer);
   friendRefreshTimer = setTimeout(()=>{
     const ae = document.activeElement;
+    friendBadgeUpdate();
+    if(document.getElementById('friendsModal') && !(ae && ae.tagName==='INPUT')){ showFriendsModal(); return; }
     if(raidNet.code && raidNet.doc && raidNet.doc.status==='lobby' && document.getElementById('raidModal')){ showRaidLobbyModal(); return; }
     if(activeTab==='raid' && !raidNet.code && !document.getElementById('battleScreen') && !(ae && ae.tagName==='INPUT')) render();
   }, 150);
@@ -1427,6 +1753,7 @@ async function friendInvite(fuid){
 async function friendAcceptInvite(from){
   const iv = friendNet.invites[from]; if(!iv) return;
   try{ await raidNet.db.doc('invites/'+raidNet.uid+'/'+from).delete(); }catch(e){}
+  closeModal(); activeTab = 'raid'; render();
   await raidJoinRoom(iv.code);
 }
 async function friendDismissInvite(from){ try{ await raidNet.db.doc('invites/'+raidNet.uid+'/'+from).delete(); }catch(e){} }
@@ -1460,12 +1787,147 @@ function bindFriendPanel(){
     friendRemove(el.dataset.fRemove);
   }));
 }
+function showFriendsModal(){ // (v169) 친구는 헤더 👥 버튼으로 여는 별도 창
+  let h = '<h3 style="text-align:center; margin-bottom:6px;">👥 친구</h3>';
+  if(friendsAvailable()) h += friendPanelHtml().replace('<div class="card" style="margin-top:12px; padding:12px;">','<div style="padding:2px;">');
+  else h += '<div class="card" style="text-align:center;"><div class="sub" style="line-height:1.5;">'+(raidNet.ready ? '이 화면에선 친구 기능을 쓸 수 없어요' : (raidNet.failed ? '🔌 온라인 연결에 실패했어요.<br>인터넷 연결을 확인하고 앱을 다시 열어주세요.' : '🔌 온라인 연결 중…'))+'</div></div>';
+  document.getElementById('modalRoot').innerHTML = '<div class="modal-bg" id="modalBg"><div class="modal" id="friendsModal" style="position:relative;"><button class="close-x" id="modalClose">✕</button>'+h+'</div></div>';
+  bindModalClose(); bindFriendPanel();
+}
+function friendBadgeUpdate(){
+  const dot = document.getElementById('friendDot'); if(!dot) return;
+  const inv = Object.keys(friendNet.invites||{}).some(k=>{ const iv = friendNet.invites[k]; return iv && Date.now()-(iv.t||0) < 10*60000; });
+  const req = Object.keys(friendNet.reqs||{}).some(k=>!friendNet.friends[k]);
+  dot.style.display = (inv || req) ? 'block' : 'none';
+  const hd = document.getElementById('homeFriendDot'); if(hd) hd.style.display = (inv || req) ? 'block' : 'none';
+}
 function friendInviteListHtml(){ // 로비(방장·팀원 없음)에서 접속 중인 친구 초대
   if(!friendsAvailable() || !friendNet.on) return '';
   const fl = friendList().filter(friendOnline);
   return '<div class="card" style="padding:9px; margin-top:8px;"><div class="sub" style="font-size:12px; margin-bottom:4px;">👥 접속 중인 친구에게 초대 보내기</div>'
     + (fl.length ? fl.map(k=>'<div style="display:flex; align-items:center; gap:8px; padding:4px 0;"><span style="color:#5cd65c;">●</span><span style="flex:1; font-size:13px;">'+raidNameOf(k)+'</span><button class="btn small" data-f-invite="'+k+'" style="width:auto; padding:4px 10px;">초대</button></div>').join('') : '<div class="sub" style="font-size:12px;">지금 접속 중인 친구가 없어요</div>')
     + '</div>';
+}
+// ===================== (v169) 홈 화면 =====================
+// 대표 정령을 크게 보여주고, 탐험(메인 버튼)과 탑·출정·레이드로 가는 입구. 배경은 지금은 SVG로 그리고 나중에 일러스트로 교체 가능
+const HOME_MODE_TABS = ['tower','expedition','raid','stage'];
+function homeRepSpirit(){
+  if(state.homeSpirit && SPIRITS[state.homeSpirit] && ownedCount(state.homeSpirit)>0) return state.homeSpirit;
+  const owned = Object.keys(SPIRITS).filter(k=>ownedCount(k)>0);
+  if(!owned.length) return null;
+  return owned.sort((a,c)=> (RARITY_ORDER.indexOf(SPIRITS[c].rarity)-RARITY_ORDER.indexOf(SPIRITS[a].rarity)) || (unitAtk(c)-unitAtk(a)))[0];
+}
+function homeNextStage(){ for(let i=0;i<CHAPTER_LENGTH*MAX_CHAPTERS;i++){ if(!state.stageBest[i]) return i; } return CHAPTER_LENGTH*MAX_CHAPTERS-1; }
+// (v170) 홈 가운데 큰 버튼 = 지금 모드(기본 탐험). 양옆 버튼을 누르면 스르륵 넘어가며 배경이 페이드로 바뀜
+const HOME_MODES = ['raid','stage','expedition']; // 원형 순서: 탐험 기준 왼쪽 레이드 · 오른쪽 출정
+const HOME_MODE_INFO = { stage:{icon:'⚔️', name:'탐험'}, expedition:{icon:'🗡️', name:'출정'}, raid:{icon:'👹', name:'레이드'} };
+let homeMode = 'stage'; // 앱을 켤 때는 항상 탐험부터
+function homeModeSub(m){
+  if(m==='stage'){ const n = homeNextStage(); return '챕터 '+(Math.floor(n/CHAPTER_LENGTH)+1)+' · 스테이지 '+(n+1)+(isBossStage(n)?' 👑':''); }
+  if(m==='expedition') return isUnlocked('expedition') ? '출정권 '+expTicketCount()+'장' : '🔒 챕터1 보스 클리어 후';
+  const wb = raidWeekBoss(); return '이번 주 · '+wb.icon+' '+wb.name;
+}
+function homeModeDot(m){ return pendingRewardCount(m)>0; }
+function homeBgLayer(mode){
+  let stars = '';
+  for(let i=0;i<30;i++){ const x = (i*97.3)%400, y = (i*53.7)%260, r = (i%5===0)?1.6:0.9; stars += '<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r+'" fill="#fff" opacity="'+(0.3+(i%4)*0.15).toFixed(2)+'"/>'; }
+  const P = {
+    stage:{ sky:['#171335','#2d2466','#4a3a8c'], moon:'#efe6ff', far:'#241d4d', near:'#1b1640', glow:'#b79cff', ground:'#120f2a' },
+    expedition:{ sky:['#0f2a2e','#1f5a55','#e0a060'], moon:'#ffe2a8', far:'#1c3f3c', near:'#132e2c', glow:'#8ff0c8', ground:'#0b1d1c' },
+    raid:{ sky:['#1a0710','#4a0f22','#8a2330'], moon:'#ff6a5a', far:'#2a0b16', near:'#1c070f', glow:'#ff7a6a', ground:'#10040a' }
+  }[mode];
+  let extra = '';
+  if(mode==='expedition') extra = '<path d="M150 800 C 180 700, 230 690, 205 610 C 190 570, 230 545, 215 520" stroke="#e8c58a" stroke-width="10" fill="none" opacity=".35" stroke-linecap="round"/>'
+    + [40,80,330,365].map((x,i)=>'<path d="M'+x+' '+(600-i%2*20)+' l-18 40 h36z M'+x+' '+(580-i%2*20)+' l-14 32 h28z" fill="#0d2422"/>').join('');
+  if(mode==='raid') extra = '<path d="M60 560 L80 420 L100 560 Z M300 560 L325 390 L350 560 Z M170 560 L185 470 L200 560Z" fill="#2a0712"/>'
+    + '<path d="M250 60 L235 120 L255 118 L238 180" stroke="#ffb0a0" stroke-width="3" fill="none" opacity=".5"/>';
+  return '<svg class="home-bg" data-bg="'+mode+'" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'
+    + '<defs><linearGradient id="hsky-'+mode+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+P.sky[0]+'"/><stop offset=".55" stop-color="'+P.sky[1]+'"/><stop offset="1" stop-color="'+P.sky[2]+'"/></linearGradient>'
+    + '<radialGradient id="hglow-'+mode+'" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="'+P.glow+'" stop-opacity=".4"/><stop offset="1" stop-color="'+P.glow+'" stop-opacity="0"/></radialGradient></defs>'
+    + '<rect width="400" height="800" fill="url(#hsky-'+mode+')"/>' + stars
+    + '<circle cx="318" cy="96" r="26" fill="'+P.moon+'" opacity=".9"/>'
+    + '<path d="M0 520 L60 440 L120 500 L190 400 L260 490 L330 420 L400 480 L400 800 L0 800Z" fill="'+P.far+'" opacity=".92"/>'
+    + extra
+    + '<path d="M0 590 L80 520 L150 575 L230 505 L310 570 L400 530 L400 800 L0 800Z" fill="'+P.near+'"/>'
+    + '<circle cx="200" cy="430" r="150" fill="url(#hglow-'+mode+')"/>'
+    + '<g fill="none" stroke="'+P.glow+'" opacity=".5"><circle cx="200" cy="430" r="118" stroke-width="2.5"/><circle cx="200" cy="430" r="100" stroke-width="1" stroke-dasharray="4 7"/></g>'
+    + '<ellipse cx="200" cy="560" rx="96" ry="22" fill="'+P.far+'"/><path d="M104 560 L118 620 L282 620 L296 560Z" fill="'+P.near+'"/>'
+    + '<path d="M0 660 Q200 610 400 660 L400 800 L0 800Z" fill="'+P.ground+'"/>'
+    + '</svg>';
+}
+function homeCarouselPos(m){ const c = HOME_MODES.indexOf(homeMode), i = HOME_MODES.indexOf(m); const d = (i - c + 3) % 3; return d===0 ? 'center' : (d===1 ? 'right' : 'left'); }
+function homeModeBtnHtml(m){
+  const info = HOME_MODE_INFO[m], locked = m==='expedition' && !isUnlocked('expedition');
+  return '<button class="home-mbtn pos-'+homeCarouselPos(m)+(locked?' locked':'')+'" data-hmode="'+m+'">'
+    + '<span class="hm-ico">'+info.icon+'</span><span class="hm-name">'+info.name+'</span><small class="hm-sub">'+homeModeSub(m)+'</small>'
+    + (homeModeDot(m) ? '<span class="home-dot"></span>' : '') + '</button>';
+}
+function homeRotateTo(m){
+  if(m===homeMode) return;
+  const from = homeCarouselPos(m);
+  const oldPos = {}; HOME_MODES.forEach(x=>{ oldPos[x] = homeCarouselPos(x); });
+  homeMode = m;
+  HOME_MODES.forEach(x=>{
+    const el = document.querySelector('.home-mbtn[data-hmode="'+x+'"]'); if(!el) return;
+    const np = homeCarouselPos(x);
+    const jump = (oldPos[x]==='left' && np==='right') || (oldPos[x]==='right' && np==='left'); // 반대편으로 넘어가는 버튼은 가로지르지 않고 사라졌다 나타남
+    if(jump){ el.classList.add('jump'); requestAnimationFrame(()=>{ el.className = el.className.replace(/pos-\w+/, 'pos-'+np); setTimeout(()=>el.classList.remove('jump'), 60); }); }
+    else el.className = el.className.replace(/pos-\w+/, 'pos-'+np);
+  });
+  document.querySelectorAll('.home-bg[data-bg]').forEach(b=>b.classList.toggle('on', b.dataset.bg===homeMode));
+}
+function renderHomeTab(){
+  const rep = homeRepSpirit();
+  const name = (typeof friendNet!=='undefined' && friendNet.on && friendNet.name) ? friendNet.name : '소환사';
+  const sp = rep ? SPIRITS[rep] : null;
+  let h = '<div class="home">' + HOME_MODES.map(m=>homeBgLayer(m).replace('class="home-bg"', 'class="home-bg'+(m===homeMode?' on':'')+'"')).join('');
+  h += '<div class="home-top"><div class="home-prof"><span class="home-ava">'+(sp?ELEMENT_INFO[sp.element].icon:'🔮')+'</span><div><b>'+name.replace(/[<>&]/g,'')+'</b><div class="sub" style="font-size:11px;">Lv.'+accountLevel()+'</div></div></div></div>';
+  h += '<div class="home-side left"><button class="home-ic" data-home="tower">🗼<small>탑 '+towerFloor()+'층</small>'+(pendingRewardCount('tower')>0?'<span class="home-dot"></span>':'')+'</button><button class="home-ic" data-home="achieve">🏅<small>업적</small></button><button class="home-ic" data-home="guide">📖<small>가이드</small></button></div>';
+  h += '<div class="home-side right"><button class="home-ic" data-home="friends">👥<small>친구</small><span class="home-dot" id="homeFriendDot" style="display:none;"></span></button><button class="home-ic" data-home="settings">⚙️<small>설정</small></button></div>';
+  h += '<div class="home-hero" data-home="hero">'
+    + (sp ? '<div class="home-emo">'+ELEMENT_INFO[sp.element].icon+'</div><div class="home-name">'+sp.name+'</div><div class="home-rar" style="color:'+RARITY_INFO[sp.rarity].color+';">'+RARITY_INFO[sp.rarity].name+' · '+ELEMENT_INFO[sp.element].name+'</div>'
+          : '<div class="home-emo">🔮</div><div class="home-name">첫 정령을 소환해보세요</div>')
+    + '</div>';
+  h += '<div class="home-bottom"><div class="home-car">'+HOME_MODES.map(homeModeBtnHtml).join('')+'</div></div>';
+  h += '</div>';
+  return h;
+}
+function showHomeSpiritPicker(){
+  const owned = Object.keys(SPIRITS).filter(k=>ownedCount(k)>0).sort((a,c)=> (RARITY_ORDER.indexOf(SPIRITS[c].rarity)-RARITY_ORDER.indexOf(SPIRITS[a].rarity)) || (unitAtk(c)-unitAtk(a)));
+  if(!owned.length){ toast('아직 보유한 정령이 없어요'); return; }
+  let h = '<h3 style="text-align:center;">대표 정령</h3><div class="sub" style="text-align:center; margin-bottom:8px;">홈에 보여줄 정령을 골라주세요</div><div class="roster-scroll"><div class="roster-grid">';
+  h += owned.map(k=>{ const sp = SPIRITS[k]; return '<button data-home-rep="'+k+'" style="padding:6px 2px; border-radius:10px; background:#1f1f2c; border:1px solid '+(k===homeRepSpirit()?'#ffd24a':'#ffffff1a')+'; color:var(--text);"><div style="font-size:22px;">'+ELEMENT_INFO[sp.element].icon+'</div><div style="font-size:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">'+sp.name+'</div></button>'; }).join('');
+  h += '</div></div>';
+  document.getElementById('modalRoot').innerHTML = '<div class="modal-bg wide" id="modalBg"><div class="modal wide roster-modal" style="position:relative;"><button class="close-x" id="modalClose">✕</button>'+h+'</div></div>';
+  bindModalClose();
+  document.querySelectorAll('[data-home-rep]').forEach(el=>el.addEventListener('click', ()=>{ state.homeSpirit = el.dataset.homeRep; save(); closeModal(); render(); }));
+}
+function fitHome(){ // 헤더와 하단 탭 사이 남는 높이에 홈을 딱 맞춤(스크롤 없음)
+  const el = document.querySelector('.home'); if(!el) return;
+  const nav = document.querySelector('nav'), top = el.getBoundingClientRect().top;
+  const hgt = Math.max(320, Math.floor(window.innerHeight - top - (nav ? nav.offsetHeight : 0)));
+  el.style.height = hgt+'px';
+  el.classList.toggle('compact', hgt < 470);
+}
+window.addEventListener('resize', ()=>{ if(activeTab==='home') fitHome(); });
+function bindHomeTab(){
+  fitHome();
+  document.querySelectorAll('[data-hmode]').forEach(el=>el.addEventListener('click', ()=>{
+    const m = el.dataset.hmode;
+    if(m!==homeMode){ homeRotateTo(m); return; } // 옆 버튼 → 가운데로 넘어옴
+    activeTab = m; render(); save();                 // 가운데 버튼 → 그 모드로 입장
+  }));
+  document.querySelectorAll('[data-home]').forEach(el=>el.addEventListener('click', ()=>{
+    const a = el.dataset.home;
+    if(a==='achieve') showAchievementsModal();
+    else if(a==='guide') showGuideModal();
+    else if(a==='settings') showSettingsModal();
+    else if(a==='friends') showFriendsModal();
+    else if(a==='hero') showHomeSpiritPicker();
+    else if(a==='expedition' && !isUnlocked('expedition')){ activeTab = 'expedition'; render(); save(); }
+    else { activeTab = a; render(); save(); }
+  }));
+  if(typeof friendBadgeUpdate==='function') friendBadgeUpdate();
 }
 function renderRaidTab(){
   const info = raidWeekBoss();
@@ -1474,7 +1936,8 @@ function renderRaidTab(){
   const cur = raidDiffById(state.raidDiff), wd = (state.raidWeekDone && state.raidWeekDone.week===raidWeekKey()) ? state.raidWeekDone.diffs : [];
   html += '<div class="sub" style="text-align:center; margin:12px 0 6px; font-weight:700;">난이도</div><div style="display:flex; gap:4px;">'
     + RAID_DIFFS.map(x=>'<button data-raid-tabdiff="'+x.id+'" style="flex:1; padding:8px 2px; border-radius:10px; font-size:12px; font-weight:800; background:'+(x.id===cur.id?x.color+'33':'#1f1f2c')+'; border:1px solid '+(x.id===cur.id?x.color:'#ffffff1a')+'; color:'+(x.id===cur.id?x.color:'var(--sub)')+';">'+x.name+(wd.includes(x.id)?' ✅':'')+'</button>').join('')+'</div>';
-  html += '<div class="sub" style="text-align:center; font-size:11px; margin:6px 0 10px;">승리 보상 🔩'+cur.stone+(cur.equip?' · 🛡️×'+cur.equip:'')+' · 주간 첫 승리 '+Object.keys(cur.weekly).map(k=>({summon:'🔮',rare:'🎟️',epic:'💜'}[k]||'')+'×'+cur.weekly[k]).join(' ')+'</div>';
+  html += '<div style="display:flex; gap:6px; margin-top:10px;"><div class="card" style="flex:1; padding:8px; text-align:center; margin:0;"><b>🎫 '+raidTicketCount()+'/'+RAID_TICKET_MAX+'</b><div class="sub" style="font-size:10px;">입장권 · '+raidTicketNextText()+'</div></div><button class="btn secondary" id="raidShopBtn" style="flex:1; margin:0;">💎 '+(state.raidGems||0)+'<br><small>레이드 상점</small></button></div>';
+  html += '<div class="sub" style="text-align:center; font-size:11px; margin:6px 0 10px;">입장권을 쓴 판만 보상 · 승리 💎 룬석 +'+RAID_GEMS[cur.id]+' · 🔩'+cur.stone+(cur.gear?' · '+ELEMENT_INFO[info.element].icon+'장비 에픽 '+Math.round(cur.gear.epic*100)+'% / 레전더리 '+Math.round(cur.gear.legendary*100)+'%':'')+' · 주간 첫 승리 '+Object.keys(cur.weekly).map(k=>({summon:'🔮',rare:'🎟️',epic:'💜'}[k]||'')+'×'+cur.weekly[k]).join(' ')+'</div>';
   if(raidNet.code){
     html += '<button class="btn" id="raidReopenBtn">🚪 방으로 돌아가기 · '+raidNet.code+'</button>';
   }else if(raidNet.ready){
@@ -1487,7 +1950,6 @@ function renderRaidTab(){
       + (raidNet.failed ? '🔌 온라인 연결에 실패했어요.<br>인터넷 연결을 확인하고 앱을 다시 열어주세요.'+(raidNet.failReason?'<br><span style="font-size:10px; opacity:.6;">'+String(raidNet.failReason).replace(/[<>&]/g,'').slice(0,80)+'</span>':'') : '🔌 온라인 연결 중…')+'</div></div>';
   }
   if(!raidNet.code) html += '<button class="btn secondary" id="raidSoloBtn" style="margin-top:10px;">🧪 혼자 연습 (AI 동료 · 보상 없음)</button>';
-  if(!raidNet.code) html += friendPanelHtml();
   html += '</div>';
   return html;
 }
@@ -1497,7 +1959,7 @@ function bindRaidTab(){
   if(q('raidJoinBtn')) q('raidJoinBtn').addEventListener('click', ()=>raidJoinRoom(q('raidCodeInput').value));
   if(q('raidCodeInput')) q('raidCodeInput').addEventListener('keydown', e=>{ if(e.key==='Enter') raidJoinRoom(q('raidCodeInput').value); });
   if(q('raidSoloBtn')) q('raidSoloBtn').addEventListener('click', raidStartSolo);
-  bindFriendPanel();
+  if(q('raidShopBtn')) q('raidShopBtn').addEventListener('click', showRaidShop);
   document.querySelectorAll('[data-raid-tabdiff]').forEach(el=>el.addEventListener('click', ()=>{ state.raidDiff = el.dataset.raidTabdiff; save(); render(); }));
   if(q('raidReopenBtn')) q('raidReopenBtn').addEventListener('click', ()=>{ if(raidNet.doc) raidOnDoc({exists:true, data:()=>raidNet.doc}); });
 }
@@ -1561,6 +2023,7 @@ function showRaidPickModal(){
     const pv = buildRaidFight(raidNet.role==='guest' ? other : mineP, raidNet.role==='guest' ? mineP : other, info.id, solo ? (state.raidDiff||'normal') : d.diff);
     const dd = raidDiffById(solo ? state.raidDiff : d.diff);
     h += cpBarHtml(teamCP(pv.myUnits), teamCP(pv.enemyUnits), '👑 '+dd.name, '팀 합산 · 기믹 미반영'); }
+  if(!solo) h += '<div class="sub" style="text-align:center; font-size:11px; margin-top:4px;">'+(state.raidTicketFor===raidNet.code ? (state.raidTicketHad?'🎫 입장권 사용됨 · 보상 있음':'🎫 입장권 없음 · 보상 없이 참여') : (raidTicketCount()>0 ? '🎫 시작하면 입장권 1장 사용 ('+raidTicketCount()+'/'+RAID_TICKET_MAX+')' : '🎫 입장권이 없어 보상 없이 참여해요'))+'</div>';
   h += '<div class="sub" style="text-align:center; margin:8px 0 4px; font-weight:700;">내 정령 (칸을 누르고 아래에서 고르기)</div>';
   const slotBtn = i=>{
     const k = raidNet.myPicks[i], sel = raidNet.selSlot===i && !myReady;
@@ -1579,7 +2042,8 @@ function showRaidPickModal(){
   h += '<div style="display:flex; gap:6px; margin-top:8px;"><button class="btn secondary" id="raidAutoBtn" style="flex:1;" '+(myReady?'disabled':'')+'>⚡ 자동</button>'
     + '<button class="btn" id="raidReadyBtn" style="flex:2;">'+(solo ? '⚔️ 전투 시작' : (myReady ? '↩ 준비 취소' : '✅ 준비 완료'))+'</button></div>';
   if(solo) h += '<button class="btn secondary" id="raidSoloExitBtn" style="margin-top:6px; opacity:.8;">나가기</button>';
-  else if(raidPartnerGone() || (!raidNet.roomH && raidNet.doc)) h += '<button class="btn secondary" id="raidDissolveBtn" style="margin-top:6px; opacity:.8;">'+(raidNet.roomH?'팀원 연결 끊김 — 레이드 해산':'레이드 해산')+'</button>';
+  if(!solo) h += '<button class="btn secondary" id="raidPickLeaveBtn" style="margin-top:6px; opacity:.8;">'+(raidNet.role==='host'?'방 닫기':'나가기')+'</button>';
+  if(solo){} else if(raidPartnerGone() || (!raidNet.roomH && raidNet.doc)) h += '<button class="btn secondary" id="raidDissolveBtn" style="margin-top:6px; opacity:.8;">'+(raidNet.roomH?'팀원 연결 끊김 — 레이드 해산':'레이드 해산')+'</button>';
   raidModalShell(h);
   document.querySelectorAll('[data-rp-slot]').forEach(el=>el.addEventListener('click', ()=>{
     if(myReady) return;
@@ -1603,6 +2067,10 @@ function showRaidPickModal(){
       state.skillFight = sf; skillSel.key = null; skillIntroPending = true; save(); showSkillStageScreen(); return;
     }
     raidUpdate({ ready:{ [raidNet.uid]: !myReady } });
+  });
+  if(document.getElementById('raidPickLeaveBtn')) document.getElementById('raidPickLeaveBtn').addEventListener('click', (e)=>{
+    if(!e.currentTarget.dataset.armed){ e.currentTarget.dataset.armed = '1'; e.currentTarget.textContent = raidNet.role==='host' ? '정말 방을 닫을까요? (한 번 더)' : '정말 나갈까요? (한 번 더)'; return; }
+    raidLeavePick();
   });
   if(document.getElementById('raidSoloExitBtn')) document.getElementById('raidSoloExitBtn').addEventListener('click', ()=>{ raidNet.role = null; closeModal(); render(); });
   if(document.getElementById('raidDissolveBtn')) document.getElementById('raidDissolveBtn').addEventListener('click', (e)=>{
@@ -1755,6 +2223,7 @@ function settleQueue(sf){
 function roundStartEffects(sf){
   if(sf.mode==='boss') applyBossGimmick(sf);
   if(sf.mode==='raid') applyRaidGimmicks(sf);
+  runeRoundStart(sf);
   const hits = [];
   const all = [...sf.myUnits, ...sf.enemyUnits];
   all.forEach(u=>{
@@ -2104,19 +2573,19 @@ const LINE_KITS = {
 function kitOf(u){ return LINE_KITS[u.line]; }
 function unitSkill(u, act){ return act==='basic' ? null : kitOf(u)[act]; }
 function skillAvailable(u, act){ if(act==='basic') return true; if(act==='s2' && u.g<2) return false; return (act==='s1'?u.cd1:u.cd2)<=0; }
+// (v172) 스테이지 보상 구조: 첫 클리어 보상은 1번만(준비창 🎁에서 직접 수령), 등급 보상은 클리어할 때마다 바로 지급(반복)
+const STAGE_REPEAT_MULT = { C:1, B:1.4, A:1.8, S:2.5 };
+function stageRepeatReward(i, grade){ return Math.round((5 + i*0.4) * STAGE_REPEAT_MULT[grade]); }
+function stageFirstReward(i){ return Math.round((50 + i*15) * 1.6); }
 function resolveSkillStageBattle(i, rounds){
   const grade = skillGradeForRounds(rounds);
   const already = state.stageBest[i];
   const gradeRank = {C:1,B:2,A:3,S:4};
-  const baseReward = Math.round(5 + i*0.4);
+  const baseReward = stageRepeatReward(i, grade);
   state.essence += baseReward;
   let improved = false, reward = 0;
-  if(!already || gradeRank[grade] > gradeRank[already]){
-    improved = true;
-    const base = 50 + i*15;
-    reward = grantStageTierRewards('stage', i, base, grade, already, 1, 0, '🗺️', '스테이지 '+(i+1), 'stage');
-    state.stageBest[i] = grade;
-  }
+  if(!already){ reward = stageFirstReward(i); addPendingReward('stage_'+i+'_first', '🎉', '스테이지 '+(i+1)+' 첫 클리어', reward, 0, 'stage'); }
+  if(!already || gradeRank[grade] > gradeRank[already]){ improved = true; state.stageBest[i] = grade; }
   state.dailyStats.stagesCleared += 1;
   checkChapterPctRewards(Math.floor(i/CHAPTER_LENGTH)+1);
   checkAchievements();
@@ -2290,7 +2759,7 @@ function persistBossWaveState(sf){
   const bf = state.bossFight; if(!bf) return;
   sf.myUnits.forEach(u=>{ bf.unitHp[u.key] = { hp: u.hp, maxHp: u.maxHp }; }); // (v152) 6마리 고정 — 체력만 그대로 이월
 }
-function spiritMaxHpGrid(key){ return Math.max(1, Math.round(unitAtk(key)*ALLY_HP_MULT*armorMult(key))); } // 새 전투 체력 스케일 기준(그리드 전투 전용, 기존 spiritMaxHp와 별개)
+function spiritMaxHpGrid(key){ const r = spiritRune(key); return Math.max(1, Math.round(unitAtk(key)*ALLY_HP_MULT*armorMult(key)*((r && r.id==='hp' && r.tier!=='boss') ? 1+runeVal(r) : 1))); } // 새 전투 체력 스케일 기준(그리드 전투 전용, 기존 spiritMaxHp와 별개)
 // (v152) 이정민님 피드백: 3웨이브짜리 보스전에서 매 웨이브 교체까지 있으면 과함 —
 // 웨이브 사이 교체는 출정(여러 판 이어지는 모드) 전용으로 남기고, 보스전은 6마리를 한 번만 골라 3웨이브 내내 그대로 감.
 // 쓰러지면 그 웨이브부터는 그 자리 빈 채로 진행(이탈), 체력은 웨이브 사이 계속 이어짐(회복 없음).
@@ -2360,7 +2829,7 @@ function endBossWaveRun(win){
 
 function lineupThreat(key, lineup){
   const el = SPIRITS[key].element; let weak = 0, strong = 0;
-  lineup.forEach(e=>{ if(beats(e, el)) weak++; if(beats(el, e)) strong++; });
+  lineup.forEach(e=>{ if(!e) return; if(beats(e, el)) weak++; if(beats(el, e)) strong++; });
   return { weak, strong };
 }
 // 준비창: 상대 한 줄 + 내 전열·후열 슬롯만
@@ -2409,10 +2878,17 @@ function fitBattleScreen(){ // 전장 칸 높이에 맞춰 유닛 크기 배율(
   const bs = document.getElementById('battleScreen'); if(!bs) return;
   const f = bs.querySelector('.bs-field'); if(!f) return;
   bs.style.setProperty('--k', '1');
-  let need = 0; [...f.children].forEach(c=>{ const cs = getComputedStyle(c); if(cs.position!=='absolute') need += c.offsetHeight; });
-  const cs = getComputedStyle(f), have = f.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
-  if(!(need>0 && have>0)) return;
-  const k = Math.max(0.5, Math.min(1.35, (have*0.9)/need));
+  const cols = [...f.querySelectorAll('.bs-col')];
+  if(!cols.length) return;
+  let kh = 9, kw = 9;
+  cols.forEach(c=>{
+    let need = 0, widest = 0;
+    [...c.children].forEach(ch=>{ if(getComputedStyle(ch).position==='absolute') return; need += ch.offsetHeight; const b = ch.querySelector('.bu-body'); if(b) widest = Math.max(widest, b.offsetWidth); });
+    const have = c.clientHeight - 18;
+    if(need>0 && have>0) kh = Math.min(kh, have*0.94/need);
+    if(widest>0) kw = Math.min(kw, c.clientWidth*0.86/widest);
+  });
+  const k = Math.max(0.45, Math.min(1.5, kh, kw));
   bs.style.setProperty('--k', k.toFixed(3));
 }
 window.addEventListener('resize', ()=>{ if(document.getElementById('battleScreen')) fitBattleScreen(); });
@@ -2513,7 +2989,8 @@ function showSkillStageScreen(){
     }
     return battleUnitHtml(u, o);
   };
-  const row = (cls, tag, s, idxs, size)=> '<div class="bs-row '+cls+'"><span class="bs-rowtag">'+tag+'</span>'+idxs.map(i=>cellHtml(s, i, size)).join('')+'</div>';
+  // (v169) 좌우 대결 시점: 왼쪽 내 편(후열 | 전열) · 가운데 선 · 오른쪽 적(전열 | 후열). 격자 규칙(전열/후열·가로/관통)은 그대로, 그리는 방향만 바뀜
+  const col = (cls, tag, s, idxs, size)=> '<div class="bs-col '+cls+'"><span class="bs-coltag">'+tag+'</span>'+idxs.map(i=>cellHtml(s, i, size)).join('')+'</div>';
 
   let html = intro ? '<div class="bs-wipe"></div>' : '';
   const titleTxt = sf.mode==='boss' ? '👑 웨이브 '+sf.wave+'/'+BOSS_WAVE_COUNT+' · R'+sf.round
@@ -2538,16 +3015,21 @@ function showSkillStageScreen(){
   const anyCrit = fx && fx.hits && fx.hits.some(h=>h.crit);
   const myFront = sf.mode==='raid' ? [0,1,2,3] : [0,1,2];
   const myBack = sf.mode==='raid' ? [4,5,6,7] : [3,4,5];
-  html += '<div class="bs-field'+(anyCrit ? ' fx-shake' : '')+'"><div class="bs-snow"></div>'
-    + row('r-eb', '후열', 'enemy', [3,4,5], 30)
-    + row('r-ef', '전열', 'enemy', [0,1,2], 38)
-    + '<div class="bs-mid"><div class="bs-log">'+((sf.log||[]).slice(-1)[0]||'')+'</div></div>'
-    + row('r-mf', '전열', 'me', myFront, sf.mode==='raid'?34:42)
-    + row('r-mb', '후열', 'me', myBack, sf.mode==='raid'?38:46)
+  const mySz = sf.mode==='raid' ? 38 : 44, isRaidBoss = sf.mode==='raid';
+  html += '<div class="bs-field side'+(anyCrit ? ' fx-shake' : '')+'"><div class="bs-snow"></div>'
+    + '<div class="bs-logtop"><div class="bs-log">'+((sf.log||[]).slice(-1)[0]||'')+'</div></div>'
+    + '<div class="bs-arena">'
+    + col('c-mb', '후열', 'me', myBack, mySz)
+    + col('c-mf', '전열', 'me', myFront, mySz)
+    + '<div class="bs-divider"></div>'
+    + col('c-ef', '전열', 'enemy', [0,1,2], isRaidBoss ? 62 : 44)
+    + (isRaidBoss ? '' : col('c-eb', '후열', 'enemy', [3,4,5], 44))
+    + '</div>'
     + (intro ? '<div class="bs-banner"><span>⚔️ 전투 개시</span></div>' : '')
     + (fx && fx.kind==='round' ? '<div class="bs-banner"><span>ROUND '+fx.round+'</span></div>' : '')
     + '</div>';
 
+  if(sf.mode==='raid') html += raidSurrenderBannerHtml(sf);
   html += '<div class="bs-panel">';
   if(sf.result){
     html += '<div class="bs-wait">전투 종료</div>';
@@ -2586,6 +3068,8 @@ function showSkillStageScreen(){
   root.className = intro ? 'bs-intro' : '';
   root.innerHTML = html;
   fitBattleScreen();
+  if(document.getElementById('raidVoteYes')) document.getElementById('raidVoteYes').addEventListener('click', ()=>raidSurrenderVote(true));
+  if(document.getElementById('raidVoteNo')) document.getElementById('raidVoteNo').addEventListener('click', raidSurrenderClear);
 
   const q = id=>document.getElementById(id);
   const leave = ()=>{
@@ -2598,7 +3082,9 @@ function showSkillStageScreen(){
         if(!raidNet.exitArmed){ raidNet.exitArmed = true; toast('한 번 더 누르면 레이드를 해산해요'); setTimeout(()=>{ raidNet.exitArmed = false; }, 3000); return; }
         raidDissolve(); return;
       }
-      toast('레이드 중에는 나갈 수 없어요 (팀원 연결이 끊기면 해산 가능)'); return;
+      if(raidNet.doc && raidNet.doc.surrender[raidNet.uid]===true){ toast('이미 포기를 제안했어요'); return; }
+      if(!raidNet.exitArmed){ raidNet.exitArmed = true; toast('한 번 더 누르면 팀원에게 포기를 제안해요'); setTimeout(()=>{ raidNet.exitArmed = false; }, 3000); return; }
+      raidSurrenderVote(true); toast('팀원에게 포기를 제안했어요'); return;
     }
     endSkillStageFight(); render(); openStagePrep(i);
   };
@@ -2622,6 +3108,7 @@ function showSkillStageScreen(){
     });
   }else if(sf.mode==='raid'){
     if(q('skillResultCloseBtn')) q('skillResultCloseBtn').addEventListener('click', leave);
+    if(q('raidOpenStonesBtn')) q('raidOpenStonesBtn').addEventListener('click', async ()=>{ raidNet.gotStones = false; await raidFinish(); showRaidShop(); });
   }else{
     if(q('skillResultCloseBtn')) q('skillResultCloseBtn').addEventListener('click', leave);
     if(q('skillRetryBtn')) q('skillRetryBtn').addEventListener('click', restartSkillStageFight);
@@ -2653,9 +3140,9 @@ function skillResultOverlayHtml(sf){
     const info = r.info || {}, grade = info.grade || skillGradeForRounds(r.rounds);
     h += '<div class="bs-ricon">🏆</div><div class="bs-rtitle">승리!</div><div class="bs-rgrade g'+grade+'">'+grade+'</div>'
       + '<div class="bs-rsub">'+r.rounds+'라운드 · '+(info.improved ? (r.prevBest ? '기록 갱신 ('+r.prevBest+' → '+grade+')' : '첫 클리어') : '최고 기록 '+(r.prevBest||grade))+'</div>'
-      + '<div class="bs-rrew"><div>✨ 정수 +'+(info.baseReward||0)+' <span>받음</span></div>'
+      + '<div class="bs-rrew"><div>✨ 정수 +'+(info.baseReward||0)+' <span>'+(info.isEquipReward?'받음':grade+'등급 보상 · 받음')+'</span></div>'
       + (info.isEquipReward && info.reward>0 ? '<div>🛡️ 장비 소환권 +'+info.reward+' <span>준비창 🎁에서 수령</span></div>' : '')
-      + (!info.isEquipReward && info.reward>0 ? '<div>🎁 등급 보상 ✨+'+info.reward+' <span>준비창 🎁에서 수령</span></div>' : '') + '</div>';
+      + (!info.isEquipReward && info.reward>0 ? '<div>🎉 첫 클리어 보상 ✨+'+info.reward+' <span>준비창 🎁에서 수령</span></div>' : '') + '</div>';
   }else{
     h += '<div class="bs-ricon">💀</div><div class="bs-rtitle">'+(r.timeout?'시간 초과':'패배')+'</div><div class="bs-rsub">'+r.rounds+'라운드</div>';
   }
@@ -2841,8 +3328,10 @@ function doDismantle(key, n){
   state.owned[key] -= n;
   cleanupFormation();
   state.enhanceStone = (state.enhanceStone||0) + gain;
+  const shards = DISMANTLE_SHARDS[RARITY_ORDER.indexOf(SPIRITS[key].rarity)] * n; // (v170) 정령 파편
+  state.shards = (state.shards||0) + shards;
   save();
-  toastReward({stone:gain}, '♻️ 분해 '+n+'개');
+  toastReward({stone:gain}, '♻️ 분해 '+n+'개 · 💠 파편 +'+shards);
   render();
 }
 function showDismantleModal(key){
@@ -2855,7 +3344,7 @@ function showDismantleModal(key){
     + '<div style="font-size:44px;">'+ELEMENT_INFO[sp.element].icon+'</div>'
     + '<h3>♻️ '+sp.name+' 분해 <span class="rarity-tag" style="background:'+info.color+'22; color:'+info.color+'">'+info.name+'</span></h3>'
     + '<div class="sub">보유 '+max+'개 · 1개당 🔩 '+per+'</div>'
-    + '<div style="font-size:22px; font-weight:800; margin:14px 0 4px;"><span id="dismantleN">1</span>개 → 🔩 +<span id="dismantleGain">'+per+'</span></div>'
+    + '<div style="font-size:22px; font-weight:800; margin:14px 0 4px;"><span id="dismantleN">1</span>개 → 🔩 +<span id="dismantleGain">'+per+'</span> · 💠 +<span id="dismantleShard">'+DISMANTLE_SHARDS[RARITY_ORDER.indexOf(sp.rarity)]+'</span></div>'
     + '<input type="range" id="dismantleRange" min="1" max="'+max+'" value="1" step="1" style="width:100%; accent-color:#9a6bff; margin:8px 0;">'
     + '<div style="display:flex; justify-content:space-between; font-size:11px; color:var(--sub);"><span>1</span><span>'+max+'</span></div>'
     + '<button class="btn" id="dismantleOk" style="margin-top:14px;">분해하기</button>'
@@ -2867,6 +3356,7 @@ function showDismantleModal(key){
     const n = parseInt(range.value);
     document.getElementById('dismantleN').textContent = n;
     document.getElementById('dismantleGain').textContent = per*n;
+    document.getElementById('dismantleShard').textContent = DISMANTLE_SHARDS[RARITY_ORDER.indexOf(sp.rarity)]*n;
   });
   document.getElementById('dismantleCancel').addEventListener('click', ()=>showManageModal(key));
   document.getElementById('dismantleOk').addEventListener('click', ()=>{
@@ -3555,37 +4045,6 @@ function doFuse(key){
   render();
 }
 // 특성 리롤: 에픽/레전더리는 variant(a/b)에 따라 패시브가 다르므로, 종 전체를 반대 variant로 전환할 수 있음
-function canReroll(key){
-  if(!isUnlocked('reroll')) return false;
-  const sp = SPIRITS[key];
-  return (sp.rarity==='epic' || sp.rarity==='legendary' || sp.rarity==='mythic') && ownedCount(key)>0;
-}
-function rerollCost(key){
-  const sp = SPIRITS[key];
-  if(sp.rarity==='mythic') return {stone:100};
-  return sp.rarity==='epic' ? {stone:15} : {stone:40};
-}
-function doReroll(key){
-  if(!canReroll(key)) return;
-  const cost = rerollCost(key);
-  if((state.enhanceStone||0) < cost.stone){ toast('강화석 부족 ('+cost.stone+' 필요)'); return; }
-  const sib = siblingKey(key);
-  state.enhanceStone -= cost.stone;
-  const count = state.owned[key]||0;
-  const lvl = enhanceLevel(key);
-  state.owned[sib] = (state.owned[sib]||0) + count;
-  state.owned[key] = 0;
-  state.discovered[sib] = true;
-  if(!state.enhanceLevel) state.enhanceLevel = {};
-  state.enhanceLevel[sib] = Math.max(state.enhanceLevel[sib]||0, lvl);
-  state.enhanceLevel[key] = 0;
-  state.lifetimeRerolls = (state.lifetimeRerolls||0) + 1;
-  cleanupFormation();
-  checkAchievements();
-  save();
-  sfx('enhance');
-  toast('특성 리롤 완료! '+SPIRITS[sib].name+'(으)로 전환됨');
-}
 function usedCountExcluding(key, excludeIdx){
   let c=0;
   state.formation.forEach((k,idx)=>{ if(k===key && idx!==excludeIdx) c++; });
@@ -3659,20 +4118,6 @@ function gradeFor(ratio){
 const STAGE_GRADE_ORDER = ['C','B','A','S'];
 const STAGE_GRADE_WEIGHT = {C:1.0, B:0.3, A:0.3, S:0.6}; // 누적하면 S까지 총 2.2배(기존 S배율과 동일)
 function stageTierEssence(base, tier){ return Math.round(base*STAGE_GRADE_WEIGHT[tier]); }
-function grantStageTierRewards(prefix, i, base, grade, already, rewardMultiplier, bonusStoneOnTop, icon, labelPrefix, tab){
-  const gradeRank = {C:1,B:2,A:3,S:4};
-  const prevRank = already ? gradeRank[already] : 0;
-  const newRank = gradeRank[grade];
-  let total = 0;
-  for(let r=prevRank+1; r<=newRank; r++){
-    const tier = STAGE_GRADE_ORDER[r-1];
-    const amt = Math.round(stageTierEssence(base, tier)*rewardMultiplier);
-    total += amt;
-    const stoneHere = (r===newRank) ? bonusStoneOnTop : 0;
-    addPendingReward(prefix+'_'+i+'_tier_'+tier, icon, labelPrefix+' '+tier+'등급', amt, stoneHere, tab);
-  }
-  return total;
-}
 // ===================== 일일 의뢰 =====================
 const QUESTS = [
   {id:'q1', name:'정령 소환 1회 하기', reward:30, check:()=> state.dailyStats.summons>=1},
@@ -3694,7 +4139,7 @@ function claimQuest(id){
 }
 
 // ===================== 렌더링 =====================
-let activeTab = 'summon';
+let activeTab = 'home';
 let achievementCategory = 'general';
 let guideCategory = 'element';
 const GUIDE_CATEGORIES = [
@@ -3735,7 +4180,7 @@ function guideSectionHtml(cat){
       + guideList([
         RARITY_INFO.common.name+'·'+RARITY_INFO.rare.name+': A·B 차이 없음',
         'A·B는 역할이 다름 — 스킬·패시브는 정령 ⓘ에서 확인',
-        '특성 리롤: 반대 계열로 전환. 계정 Lv.'+ACCOUNT_UNLOCK_LEVEL.reroll+'부터 가능, 보유 수·강화 유지'
+        '🔮 룬: 정령마다 1칸 · 정령 분해로 얻는 💠 파편 '+RUNE_REROLL_COST+'개로 무작위 재각인', '💎 고대 룬석: 레이드 승리 보상 → 레이드 상점에서 룬 뽑기·고대 룬 교환·룬 승급석 등 구입', '레이드 입장권: 최대 3장 · 8시간마다 1장 · 입장권을 쓴 판만 보상'
       ])
       + guideHeader('👑 '+RARITY_INFO.mythic.name)
       + guideList(['등급이 오를수록 스킬 효과가 커지고 추가 효과가 붙음', '탑에서는 통솔: 팀 전체 공격력 ×1.1'])
@@ -3779,7 +4224,7 @@ function guideSectionHtml(cat){
     + guideHeader('🗼 탑')
     + guideList(['처음부터 개방 · 끝없이 올라가는 모드', '1~10층 '+towerSlotCount(1)+'칸 · 11~20층 '+towerSlotCount(11)+'칸 · 21층부터 '+towerSlotCount(21)+'칸', '2층부터 층마다 특수 규칙', '요구 전투력을 넘으면 통과 · 층 보상은 처음 1회'])
     + guideHeader('⚔️ 레이드')
-    + guideList(['2명이 각자 4마리(전열2·후열2)를 데려가 8칸으로 함께 싸움', '방 만들기 → 코드 공유 → 친구가 코드 입력', '보스와 기믹은 매주 월요일 바뀜', '팀원이 30초 넘게 끊기면 AI가 대신 행동'])
+    + guideList(['2명이 각자 4마리(전열2·후열2)를 데려가 8칸으로 함께 싸움', '방 만들기 → 코드 공유 → 친구가 코드 입력', '보스와 기믹은 매주 월요일 바뀜', '팀원이 30초 넘게 끊기면 AI가 대신 행동', '입장권(최대 3장, 8시간마다 1장)을 쓴 판만 보상 — 없어도 친구와 함께 싸울 수는 있음'])
     + guideHeader('🔓 해금')
     + guideList(['출정: 챕터1 보스 클리어 + 계정 Lv.'+ACCOUNT_UNLOCK_LEVEL.expedition])
     + '</div>';
@@ -3816,11 +4261,11 @@ function render(){
   document.getElementById('acctLevelVal').textContent = lvl;
   document.getElementById('acctLevelFill').style.width = pct+'%';
   document.querySelectorAll('nav button').forEach(b=>{
-    b.classList.toggle('active', b.dataset.tab===activeTab);
+    b.classList.toggle('active', b.dataset.tab===activeTab || (b.dataset.tab==='home' && HOME_MODE_TABS.includes(activeTab)));
     if(b.dataset.requires) b.classList.toggle('locked', !isUnlocked(b.dataset.requires));
   });
   document.querySelectorAll('[data-navdot]').forEach(el=>{
-    el.style.display = pendingRewardCount(el.dataset.navdot)>0 ? 'block' : 'none';
+    el.style.display = (el.dataset.navdot==='home' ? (pendingRewardCount('tower')+pendingRewardCount('expedition')+pendingRewardCount('stage')) : pendingRewardCount(el.dataset.navdot))>0 ? 'block' : 'none';
   });
   { const oldSc = document.getElementById('towerScroll'); if(oldSc) towerScrollTop = oldSc.scrollTop; if(activeTab!=='tower') towerScrollTop = null; }
   const main = document.getElementById('main');
@@ -3830,7 +4275,10 @@ function render(){
   else if(activeTab==='tower') main.innerHTML = renderTowerTab();
   else if(activeTab==='expedition') main.innerHTML = renderExpeditionTab();
   else if(activeTab==='raid') main.innerHTML = renderRaidTab();
+  else if(activeTab==='home') main.innerHTML = renderHomeTab();
   else main.innerHTML = renderStageTab();
+  if(HOME_MODE_TABS.includes(activeTab)) main.insertAdjacentHTML('afterbegin', '<button class="home-back" id="homeBackBtn">← 홈</button>');
+  main.classList.toggle('is-home', activeTab==='home');
   attachHandlers();
   { const sc = document.getElementById('towerScroll');
     if(sc){
@@ -4036,8 +4484,8 @@ function summonRateTableHtml(mode){
 function renderSpiritsTab(){
   let html = '';
   html += '<div class="card" style="display:flex; align-items:center; justify-content:space-between; gap:6px;">';
-  html += '<div style="font-weight:700;">📦 내 정령 <span class="sub" style="font-weight:600; font-size:12px;">· 💪 최강 6마리 '+fmtCP(bestTeamCP())+'</span></div>';
-  html += '<button class="btn secondary small" id="openDex">📖 도감</button>';
+  html += '<div style="font-weight:700;">📦 내 정령</div>';
+  html += '<span style="display:flex; gap:6px;"><button class="btn secondary small" id="openRunes" style="width:auto;">🔮 룬</button><button class="btn secondary small" id="openDex" style="width:auto;">📖 도감</button></span>';
   html += '</div>';
 
   html += '<h2>합성 가능</h2>';
@@ -4295,7 +4743,13 @@ function getStageRewardContent(stageIdx){
   if(boss){
     ladder = renderGradeLadderHtml((50+stageIdx*15)*1.5, state.stageBest[stageIdx], stageTierEssence, 'boss_'+stageIdx+'_tier_');
   }else{
-    ladder = renderGradeLadderHtml(50+stageIdx*15, state.stageBest[stageIdx], stageTierEssence, 'stage_'+stageIdx+'_tier_');
+    const fid = 'stage_'+stageIdx+'_first', fPend = hasPendingFor(fid), cleared = !!state.stageBest[stageIdx];
+    ladder = '<div'+(fPend ? ' data-claim-reward="'+fid+'"' : '')+' style="position:relative; padding:8px; border-radius:12px; text-align:center; cursor:'+(fPend?'pointer':'default')+'; background:'+(fPend?'#5b6bff33':(cleared?'#5b6bff22':'#2a2a38'))+'; border:1px solid '+(fPend?'#5b6bff':'#3a3a4a')+';">'
+      + (fPend?'<div style="position:absolute; top:-3px; right:-3px; width:9px; height:9px; border-radius:50%; background:#ff4a4a; border:1.5px solid var(--panel);"></div>':'')
+      + '<div style="font-weight:800;">🎉 첫 클리어 보상</div><div class="sub" style="font-size:12px;">✨ +'+stageFirstReward(stageIdx)+'</div>'
+      + '<div style="font-size:11px; margin-top:2px; font-weight:700; color:'+(fPend?'#ffd24a':'var(--sub)')+';">'+(fPend?'눌러서 받기':(cleared?'✅ 받음':'🔒 첫 클리어 시'))+'</div></div>'
+      + '<div style="padding:8px; border-radius:12px; background:#2a2a38; border:1px solid #3a3a4a;"><div style="font-weight:800; text-align:center; font-size:13px;">🔁 클리어할 때마다 (등급별)</div>'
+      + '<div style="display:flex; gap:4px; margin-top:6px;">'+['C','B','A','S'].map(g=>'<div style="flex:1; text-align:center; padding:4px 0; border-radius:8px; background:#ffffff0a;"><b>'+g+'</b><div class="sub" style="font-size:11px;">✨'+stageRepeatReward(stageIdx, g)+'</div></div>').join('')+'</div></div>';
   }
   let specialBonusHtml = '';
   if(!boss && isSpecialStage(stageIdx)){
@@ -4328,7 +4782,7 @@ function getStageRewardContent(stageIdx){
   }
   // 첫 클리어 보너스는 위 등급표 타일로 이미 보여주고 있으니, 아래 "대기 중 보상" 목록에서는 같은 항목을 다시 안 보여주도록 제외
   const prefix = boss ? ('boss_'+stageIdx+'_') : ('stage_'+stageIdx+'_');
-  const pendingHere = pendingRewardsFor(prefix).filter(r=>r.id.indexOf('_tier_')===-1 && !/_bonus$/.test(r.id));
+  const pendingHere = pendingRewardsFor(prefix).filter(r=> boss ? (r.id.indexOf('_tier_')===-1 && !/_bonus$/.test(r.id)) : (!/_first$/.test(r.id) && !/_bonus$/.test(r.id)));
   const pendingTiles = pendingHere.length>0 ? '<div style="margin-top:8px; display:flex; flex-direction:column; gap:6px;">' + pendingHere.map(r=>
       '<div data-claim-reward="'+r.id+'" style="position:relative; padding:6px 2px; border-radius:10px; background:#5b6bff33; border:1px solid #5b6bff; cursor:pointer; text-align:center;">'
       + '<div style="position:absolute; top:-3px; right:-3px; width:9px; height:9px; border-radius:50%; background:#ff4a4a; border:1.5px solid var(--panel);"></div>'
@@ -4498,7 +4952,7 @@ const ACHIEVEMENTS = [
   {id:'perfect_boss', name:'완벽한 제압', desc:'보스 하나를 S등급으로 격파하기', reward:{essence:500}, category:'stage', secret:true, check:()=> Object.entries(state.stageBest||{}).some(([k,v])=> v==='S' && isBossStage(parseInt(k)))},
   {id:'perfect_tower', name:'탑의 초월자', desc:'무한의 탑에서 아무 층이나 S등급으로 돌파하기', reward:{stone:200}, category:'tower', secret:true, check:()=> Object.values(state.towerFloorGrades||{}).includes('S')},
   {id:'perfect_chapters', name:'완벽주의자', desc:'모든 챕터의 보스를 전부 S등급으로 격파하기', reward:{essence:1000}, category:'stage', secret:true, check:()=> [1,2,3,4,5].every(c=> state.stageBest[CHAPTER_LENGTH*c-1]==='S')},
-  {id:'reroll_master', name:'변신의 달인', desc:'특성 리롤을 5회 사용하기', reward:{stone:150}, category:'general', secret:true, check:()=> (state.lifetimeRerolls||0)>=5},
+  {id:'rune_master', name:'룬 각인사', desc:'룬을 5번 새기기', reward:{stone:150}, category:'general', check:()=> (state.lifetimeEngraves||0)>=5},
   {id:'wood_bloom_max', name:'천년의 나이테', desc:'만개/천년수 특성을 가진 정령을 최대 레벨까지 강화하기', reward:{essence:600}, category:'general', secret:true, check:()=> Object.keys(state.enhanceLevel||{}).some(k=>{ const p=passiveFor(k); return p && p.enhanceCapBonus && enhanceLevel(k)>=maxEnhanceFor(k); })}
 ];
 // 속성별 도감 완성 보상 (정령 10종 / 장비 10종씩)
@@ -6075,24 +6529,15 @@ function showManageModal(key){
   html += '<div class="sub">보유 '+ownedCount(key)+'개 · 강화 Lv.'+lvl+'/'+maxLvl+(maxed?' (최대)':'')+'</div>';
   html += '<div class="sub">정령력 '+fmtDmg(unitPower(key))+' · 💪 전투력 '+fmtCP(spiritCP(key))+'</div>';
   if(weaponMult(key)>1 || armorMult(key)>1) html += '<div class="sub">⚔️ 공격 +'+eqPct(weaponMult(key)-1)+'% · 🛡️ 체력 +'+eqPct(armorMult(key)-1)+'%</div>';
-  const passive = passiveFor(key);
-  if(passive){
-    html += '<div style="margin-top:8px; padding:8px; background:var(--panel2); border-radius:10px;"><div style="font-weight:700;">'+passive.icon+' '+passive.name+'</div><div class="sub">'+passive.desc+'</div></div>';
-  }
+  { const kit = LINE_KITS[sp.element+'_'+sp.variant]; // (v170) 옛 패시브 대신 실제 전투에서 쓰는 역할·스킬
+    html += '<button class="btn secondary small" id="kitInfoBtn" style="margin-top:8px; width:auto; padding:5px 12px;">'+kit.icon+' '+kit.role+' · 스킬 보기</button>'; }
   html += '</div>';
+  html += runeManageHtml(key);
   html += equipSlotsHtml(key);
   if(!maxed){
     html += '<button class="btn" id="enhanceBtn" style="margin-top:12px;" '+(canEnhance?'':'disabled')+'>강화하기 (정수 '+cost.essence+' · 강화석 '+cost.stone+')</button>';
   }
   html += '<button class="btn secondary" id="dismantleBtn" style="margin-top:8px;" '+(ownedCount(key)<=0?'disabled':'')+'>♻️ 분해하기</button>';
-  if(canReroll(key)){
-    const rc = rerollCost(key);
-    const sib = SPIRITS[siblingKey(key)];
-    const sibPassive = passiveFor(siblingKey(key));
-    html += '<button class="btn secondary" id="rerollBtn" style="margin-top:8px;" '+((state.enhanceStone||0)>=rc.stone?'':'disabled')+'>🔄 특성 리롤 → '+sib.name+' ('+(sibPassive?sibPassive.name:'')+') · 강화석 '+rc.stone+'</button>';
-  }else if((sp.rarity==='epic'||sp.rarity==='legendary'||sp.rarity==='mythic') && ownedCount(key)>0 && !isUnlocked('reroll')){
-    html += '<button class="btn secondary" disabled style="margin-top:8px; opacity:0.55;">🔒 특성 리롤 (계정 Lv.'+ACCOUNT_UNLOCK_LEVEL.reroll+' 필요)</button>';
-  }
   document.getElementById('modalRoot').innerHTML =
     '<div class="modal-bg" id="modalBg"><div class="modal" style="position:relative;">'
     + '<button class="close-x" id="modalClose">✕</button>' + html + '</div></div>';
@@ -6102,12 +6547,17 @@ function showManageModal(key){
   if(eBtn) eBtn.addEventListener('click', ()=>{ doEnhance(key); showManageModal(key); });
   const dBtn = document.getElementById('dismantleBtn');
   if(dBtn) dBtn.addEventListener('click', ()=>showDismantleModal(key));
-  const rBtn = document.getElementById('rerollBtn');
-  if(rBtn) rBtn.addEventListener('click', ()=>{
-    const sib = siblingKey(key);
-    doReroll(key);
-    showManageModal(sib);
+  const kBtn = document.getElementById('kitInfoBtn');
+  if(kBtn) kBtn.addEventListener('click', ()=>showUnitKitInfo(makeBattleUnit('me', 0, key, unitAtk(key), ALLY_HP_MULT)));
+  const rrBtn = document.getElementById('runeRerollBtn');
+  if(rrBtn) rrBtn.addEventListener('click', (e)=>{
+    const cur = spiritRune(key);
+    if(cur && (cur.tier==='legend' || cur.tier==='boss') && !e.currentTarget.dataset.armed){ e.currentTarget.dataset.armed = '1'; e.currentTarget.textContent = '⚠️ 지금 룬이 사라져요 · 한 번 더'; return; }
+    runeReroll(key);
   });
+  const ruBtn = document.getElementById('runeUpBtn'); if(ruBtn) ruBtn.addEventListener('click', ()=>runeUpgrade(key));
+  const riBtn = document.getElementById('runeInvBtn');
+  if(riBtn) riBtn.addEventListener('click', ()=>showRuneInvPicker(key));
 }
 function showDexModal(){
   let html = '<div class="grid5">';
@@ -6201,7 +6651,7 @@ function showSlotPicker(slotIdx, returnFn, enemyEl, rosterFilter, lineup){
   if(enemyEl){
     html += '<div class="sub" style="text-align:center; margin-bottom:8px;">슬롯 '+(slotIdx+1)+' 상대: <span style="font-size:18px;">'+ELEMENT_INFO[enemyEl].icon+'</span> '+ELEMENT_INFO[enemyEl].name+' · 🟢유리 🔴불리</div>';
   }else if(lineup){
-    html += '<div class="sub" style="text-align:center; margin-bottom:8px;">상대 '+lineup.map(e=>ELEMENT_INFO[e].icon).join('')+'</div>';
+    html += '<div class="sub" style="text-align:center; margin-bottom:8px;">상대 '+lineup.filter(Boolean).map(e=>ELEMENT_INFO[e].icon).join('')+'</div>'; // (v169 버그수정) 적 수가 3~6으로 바뀌며 빈 칸(null)이 섞여 선택창이 안 열리던 문제
   }
   if(state.formation[slotIdx]){
     html += '<button class="btn secondary" id="clearSlot" style="margin-bottom:10px;">슬롯 비우기</button>';
@@ -6390,6 +6840,7 @@ function attachHandlers(){
   document.querySelectorAll('[data-equip-key]').forEach(el=>el.addEventListener('click', ()=>showEquipDetailModal(el.dataset.equipKey)));
   const ms = document.getElementById('multiSummonBtn'); if(ms) ms.addEventListener('click', doMultiSummon);
   const dex = document.getElementById('openDex'); if(dex) dex.addEventListener('click', showDexModal);
+  const rn = document.getElementById('openRunes'); if(rn) rn.addEventListener('click', showRuneHub);
   const ab = document.getElementById('openAchieve'); if(ab) ab.addEventListener('click', showAchievementsModal);
   const hb = document.getElementById('collectHearthBtn'); if(hb) hb.addEventListener('click', collectHearth);
   const stb = document.getElementById('shopTicketBtn'); if(stb) stb.addEventListener('click', doShopTicket);
@@ -6438,6 +6889,8 @@ function attachHandlers(){
     });
   }
   if(activeTab==='raid') bindRaidTab();
+  if(activeTab==='home') bindHomeTab();
+  { const hb = document.getElementById('homeBackBtn'); if(hb) hb.addEventListener('click', ()=>{ activeTab = 'home'; render(); save(); }); }
   document.querySelectorAll('[data-manage]').forEach(el=>{
     el.addEventListener('click', ()=>showManageModal(el.dataset.manage));
   });
@@ -6504,6 +6957,7 @@ document.getElementById('headerGuideBtn').addEventListener('click', showGuideMod
 document.getElementById('headerResetBtn').addEventListener('click', showSettingsModal);
   { const hm = document.getElementById('headerMenu');
     document.getElementById('headerMenuBtn').addEventListener('click', e=>{ e.stopPropagation(); hm.style.display = hm.style.display==='none' ? 'block' : 'none'; });
+    if(document.getElementById('headerFriendBtn') && !document.getElementById('headerFriendBtn').dataset.bound){ document.getElementById('headerFriendBtn').dataset.bound='1'; document.getElementById('headerFriendBtn').addEventListener('click', e=>{ e.stopPropagation(); showFriendsModal(); }); }
     hm.querySelectorAll('[data-hmenu]').forEach(b=>b.addEventListener('click', ()=>{ hm.style.display = 'none'; ({achieve:showAchievementsModal, guide:showGuideModal, settings:showSettingsModal})[b.dataset.hmenu](); }));
     document.addEventListener('click', ()=>{ hm.style.display = 'none'; }); }
 
@@ -6519,7 +6973,7 @@ document.getElementById('headerResetBtn').addEventListener('click', showSettings
 })();
 
 
-const TAB_IDS = ['summon','hearth','spirits','stage','expedition','tower','raid'];
+const TAB_IDS = ['home','summon','hearth','spirits','stage','expedition','tower','raid'];
 function sanitizeState(){
   const s = state, fin = v => typeof v==='number' && isFinite(v);
   ['essence','enhanceStone','towerBest','towerBestPower','expeditionBestReach'].forEach(k=>{ s[k] = fin(s[k]) ? Math.max(0, s[k]) : 0; });
@@ -6577,6 +7031,22 @@ function sanitizeState(){
       t.buys = fin(t.buys) ? Math.min(EXP_TICKET_BUY_PRICES.length, Math.max(0, Math.floor(t.buys))) : 0;
     } }
   if(!(fin(s.saveRev) && s.saveRev>=0)) s.saveRev = 0;
+  { // (v170) 룬 관련 필드 정리
+    const fin2 = v=> typeof v==='number' && isFinite(v);
+    s.shards = (fin2(s.shards) && s.shards>=0) ? Math.floor(s.shards) : 0;
+    s.runePity = (fin2(s.runePity) && s.runePity>=0) ? Math.min(0.5, s.runePity) : 0;
+    s.lifetimeEngraves = (fin2(s.lifetimeEngraves) && s.lifetimeEngraves>=0) ? Math.floor(s.lifetimeEngraves) : 0;
+    const R = {}; if(s.runes && typeof s.runes==='object' && !Array.isArray(s.runes)) Object.keys(s.runes).forEach(k=>{ if(SPIRITS[k] && runeValid(s.runes[k])) R[k] = { id:s.runes[k].id, tier:s.runes[k].tier }; }); s.runes = R;
+    s.runeInv = Array.isArray(s.runeInv) ? s.runeInv.filter(runeValid).map(r=>({id:r.id, tier:r.tier})).slice(0, RUNE_INV_MAX) : [];
+    s.raidGems = (fin2(s.raidGems) && s.raidGems>=0) ? Math.floor(s.raidGems) : 0;
+    if(Array.isArray(s.runeStones) && s.runeStones.length) s.raidGems += s.runeStones.length*6; // (v172) 예전 룬석(개봉형)은 재화로 바꿔줌
+    s.runeStones = [];
+    s.runeUpStones = (fin2(s.runeUpStones) && s.runeUpStones>=0) ? Math.floor(s.runeUpStones) : 0;
+    if(!(s.raidTickets && typeof s.raidTickets==='object' && fin2(s.raidTickets.count) && fin2(s.raidTickets.lastTick))) s.raidTickets = null;
+    else s.raidTickets.count = Math.max(0, Math.min(RAID_TICKET_MAX, Math.floor(s.raidTickets.count)));
+    if(!(s.raidShopBuys && typeof s.raidShopBuys==='object' && typeof s.raidShopBuys.week==='string' && s.raidShopBuys.n && typeof s.raidShopBuys.n==='object')) s.raidShopBuys = null;
+    if(typeof s.homeSpirit!=='string' || !SPIRITS[s.homeSpirit]) s.homeSpirit = null;
+  }
   if(s.skillFight && s.skillFight.mode==='raid') s.skillFight = null; // (v165) 레이드는 방 문서가 원본 — 재접속 시 거기서 다시 받음
   if(s.skillFight){
     // (v158 버그수정) v145 시절(스테이지 3 전용) 검사만 있어서 그 뒤로 생긴 일반 스테이지 전체·보스·출정 전투가
@@ -6675,7 +7145,7 @@ sanitizeState();
 // (v122) 앱을 껐다 켜도 하던 화면으로: 마지막 탭 → 진행 중인 보스전(결과 화면 포함) → 열어둔 탑/스테이지 준비창
 function resumeLastView(){
   if(!state.skillFight) unmountBattleScreen(); // 세이브가 바뀌어(클라우드 복원 등) 전투가 없으면 전장 화면을 걷어냄
-  if(TAB_IDS.includes(state.lastTab)) activeTab = state.lastTab;
+  activeTab = 'home'; // (v170) 앱을 켜면 항상 홈(탐험 모드)부터
   if(state.bossFight) activeTab = 'stage';
   render();
   if(state.skillFight){ activeTab = 'stage'; render(); skillSel.key = null; showSkillStageScreen(); return; } // (v158 버그수정) 보스전도 skillFight로 통일 관리되므로 이 한 줄이 보스 재개까지 다 처리 — 아래 구버전 bossFight 분기는 도달 불가라 제거
