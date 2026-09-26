@@ -1,7 +1,7 @@
 {
-  "name": "정령 소환사",
-  "short_name": "정령소환사",
-  "description": "정령을 소환하고 키우는 방치형 오토배틀러",
+  "name": "아니마룬",
+  "short_name": "아니마룬",
+  "description": "신화 속 정령을 소환하고 키우는 오토배틀러",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
