@@ -1,9 +1,9 @@
 // 정령 소환사 — 오프라인 실행용 서비스 워커
 // 파일을 새 버전으로 올릴 때 아래 CACHE 이름의 숫자를 올리면 예전 캐시가 정리돼요.
-const CACHE = 'spirit-summoner-v132';
+const CACHE = 'spirit-summoner-v165';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e=>{
-  e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then(c=>Promise.all(FILES.map(f=>c.add(f).catch(()=>{})))).then(()=>self.skipWaiting()));
 });
 self.addEventListener('activate', e=>{
   e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));
